@@ -38,7 +38,6 @@ const FindGuest = () => {
 			<div className='w-full'>
 				<FindGuestForm onHandleSubmit={handleGuestData} />
 			</div>
-			<ToastContainer position='top-right' />
 		</>
 	);
 };

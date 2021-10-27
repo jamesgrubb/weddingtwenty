@@ -27,12 +27,13 @@ export default async function handler(req, res) {
 					})
 					.firstPage();
 				const minifiedRecords = getMinifiedRecords(records);
-				if (!minifiedRecords[0].fields.Name) {
+				if (res.statusCode === 200 || res.statusCode === 201) {
+					res.json(minifiedRecords);
+				} else {
 					throw new SyntaxError(
 						'name was not found in Guest database'
 					);
 				}
-				res.json(minifiedRecords);
 			} catch (error) {
 				console.log(error);
 				res.statusCode = 500;
