@@ -16,7 +16,7 @@ const FindGuestForm = (props) => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className='flex flex-col w-1/2'>
-				<label htmlFor='name' className='w-full uppercase'>
+				<label htmlFor='name' className='w-full'>
 					name
 				</label>
 				<input

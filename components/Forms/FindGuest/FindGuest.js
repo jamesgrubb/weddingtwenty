@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { FindGuestForm } from './FindGuestForm';
 import 'react-toastify/dist/ReactToastify.css';
 const FindGuest = () => {
@@ -15,7 +15,20 @@ const FindGuest = () => {
 					headers: {
 						'Content-Type': 'application/json',
 					},
-				}),
+				})
+					.then((response) => {
+						if (response.ok) {
+							return response.json();
+						} else {
+							throw new Error(
+								'Something went wrong with the response'
+							);
+						}
+					})
+					.then((rawResponse) => {
+						console.log(rawResponse);
+					})
+					.catch((error) => {}),
 				{
 					pending: 'Promise is pending',
 					success: 'Promise resolved 👌',

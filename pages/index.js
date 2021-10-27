@@ -4,7 +4,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>James&Tinas Wedding</title>
+				<title>James&amp;Tinas Wedding</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
