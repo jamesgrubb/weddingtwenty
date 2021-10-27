@@ -19,13 +19,14 @@ export default async function handler(req, res) {
 			break;
 		default:
 			try {
-				const { name, surname } = req.body;
+				const { name, surname } = await req.body;
 				console.log(name, surname);
 				const records = await table('Guests')
 					.select({
 						filterByFormula: `AND(({Name}='${name}'),({Surname}='${surname}'))`,
 					})
 					.firstPage();
+				console.log(records);
 				const minifiedRecords = getMinifiedRecords(records);
 				if (res.statusCode === 200 || res.statusCode === 201) {
 					res.json(minifiedRecords);

@@ -26,9 +26,11 @@ const FindGuest = () => {
 						}
 					})
 					.then((rawResponse) => {
-						console.log(rawResponse);
+						console.log('raw-responser', awResponse);
 					})
-					.catch((error) => {}),
+					.catch((error) => {
+						console.log('catch error', error);
+					}),
 				{
 					pending: 'Promise is pending',
 					success: 'Promise resolved 👌',
