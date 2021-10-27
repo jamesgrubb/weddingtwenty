@@ -1,9 +1,31 @@
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { random } from 'gsap/gsap-core';
+
 const Hero = () => {
+	const confetti = useRef();
+
+	useEffect(() => {
+		console.log(confetti);
+		const tl = gsap.timeline({ defaults: { duration: 2 } });
+		tl.set(confetti.current.children, { opacity: 0 });
+		tl.to(confetti.current.children, {
+			ease: 'power1.inOut',
+			opacity: 1,
+			y: 30,
+			stagger: {
+				each: 0.5,
+				from: 'random',
+				grid: 'auto',
+			},
+		});
+	});
+
 	return (
-		<div className='w-full h-screen bg-gray-300'>
-			<div className='flex flex-col items-center justify-center h-full bg-red-500'>
-				<h2 className='text-5xl'>Celebrrrrate</h2>
-				<figure className='relative w-1/5 p-0 m-0 md:absolute '>
+		<div className='flex justify-center w-full h-screen bg-gray-300'>
+			<div className='flex flex-col items-end justify-center h-full text-center bg-red-500'>
+				<h2 className='w-1/2 text-5xl text-cente'>Celebrrrrate</h2>
+				<figure className='relative w-1/5 p-0 m-0 bg-red-100 left-1/4 md:absolute '>
 					<svg
 						width='100%'
 						height='100%'
@@ -43,8 +65,252 @@ const Hero = () => {
 							stroke='black'
 						/>
 					</svg>
+					<svg
+						ref={confetti}
+						className='absolute w-[50vw] -left-1/2 top-1/2'
+						width='100%'
+						height='100%'
+						viewBox='0 0 449 478'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'>
+						<circle
+							cx='228.262'
+							cy='120.123'
+							r='6.33486'
+							fill='#FD8002'
+						/>
+						<circle
+							cx='45.6117'
+							cy='176.893'
+							r='6.33486'
+							fill='#FD8002'
+						/>
+						<circle
+							cx='138.635'
+							cy='88.449'
+							r='6.33486'
+							fill='#FD8002'
+						/>
+						<circle
+							cx='132.3'
+							cy='221.267'
+							r='6.33486'
+							fill='#FD8002'
+						/>
+						<circle
+							cx='320.307'
+							cy='56.2814'
+							r='6.33486'
+							fill='#FD8002'
+						/>
+						<circle
+							cx='144.97'
+							cy='31.1383'
+							r='6.33486'
+							fill='#FD8002'
+						/>
+						<circle
+							cx='228.262'
+							cy='101.118'
+							r='6.33486'
+							fill='#F02EC5'
+						/>
+						<circle
+							cx='6.49917'
+							cy='113.277'
+							r='6.33486'
+							fill='#F02EC5'
+						/>
+						<circle
+							cx='199.692'
+							cy='120.123'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='193.357'
+							cy='252.941'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='176.387'
+							cy='7.1172'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='206.568'
+							cy='88.449'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='405.563'
+							cy='144.441'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='282.809'
+							cy='82.1138'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='344.876'
+							cy='232.278'
+							r='6.33486'
+							fill='#FF0000'
+						/>
+						<circle
+							cx='257.81'
+							cy='113.788'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='215.592'
+							cy='350.767'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='110.495'
+							cy='82.1138'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='104.161'
+							cy='214.932'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='351.211'
+							cy='59.3172'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='302.305'
+							cy='18.4686'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='441.73'
+							cy='75.779'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='435.395'
+							cy='208.597'
+							r='6.33486'
+							fill='#FBE309'
+						/>
+						<circle
+							cx='166.434'
+							cy='94.7837'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='344.876'
+							cy='350.767'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='351.211'
+							cy='113.788'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='257.81'
+							cy='464.58'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='144.97'
+							cy='59.3172'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='177.788'
+							cy='31.1383'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='64.6164'
+							cy='119.612'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='32.9423'
+							cy='350.767'
+							r='6.33486'
+							fill='#00FF66'
+						/>
+						<circle
+							cx='326.642'
+							cy='84.6013'
+							r='6.33486'
+							fill='#7409FB'
+							fill-opacity='0.94'
+						/>
+						<circle
+							cx='405.563'
+							cy='320.616'
+							r='6.33486'
+							fill='#7409FB'
+							fill-opacity='0.94'
+						/>
+						<circle
+							cx='293.093'
+							cy='106.943'
+							r='6.33486'
+							fill='#7409FB'
+							fill-opacity='0.94'
+						/>
+						<circle
+							cx='144.97'
+							cy='470.915'
+							r='6.33486'
+							fill='#7409FB'
+							fill-opacity='0.94'
+						/>
+						<circle
+							cx='326.642'
+							cy='24.8035'
+							r='6.33486'
+							fill='#7409FB'
+							fill-opacity='0.94'
+						/>
+						<circle
+							cx='251.475'
+							cy='88.4488'
+							r='6.33486'
+							fill='#0FB5FD'
+						/>
+						<circle
+							cx='245.141'
+							cy='221.267'
+							r='6.33486'
+							fill='#0FB5FD'
+						/>
+					</svg>
 				</figure>
-				<h1 className='text-5xl'>tina and james wedding</h1>
+				<h1 className='w-1/2 text-5xl text-center'>
+					tina and james wedding
+				</h1>
 			</div>
 		</div>
 	);

@@ -27,7 +27,7 @@ const FindGuest = () => {
 						}
 					})
 					.then((rawResponse) => {
-						console.log('raw-responser', raw - response);
+						console.log('raw-responser', rawResponse);
 					})
 					.catch((error) => {
 						console.log('catch error', error);
