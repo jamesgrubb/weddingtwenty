@@ -17,6 +17,7 @@ const FindGuest = () => {
 					},
 				})
 					.then((response) => {
+						console.log(response);
 						if (response.ok) {
 							return response.json();
 						} else {
@@ -26,7 +27,7 @@ const FindGuest = () => {
 						}
 					})
 					.then((rawResponse) => {
-						console.log('raw-responser', awResponse);
+						console.log('raw-responser', raw - response);
 					})
 					.catch((error) => {
 						console.log('catch error', error);
