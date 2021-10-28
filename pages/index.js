@@ -12,7 +12,6 @@ export default function Home() {
 			</Head>
 			<Rsvp />
 			<Hero />
-			<FindGuest />
 			<Section id='welcome' title='Welcome'>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.

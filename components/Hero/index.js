@@ -336,7 +336,8 @@ const Hero = () => {
 							fill='#0FB5FD'></circle>
 					</svg>
 					<svg
-						className='absolute w-[50vw] top-full'
+						preserveAspectRatio='xMidYMin slice'
+						className='overflow-visible  absolute w-[60vw] top-1/2'
 						ref={confettiRef}
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
