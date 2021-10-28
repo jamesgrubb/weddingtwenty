@@ -31,3 +31,10 @@
 		font-family: 'Hatton';
 	}
 }
+
+.prose ul li:before {
+	display: none !important;
+}
+.prose ul li {
+	padding-left: 0 !important;
+}

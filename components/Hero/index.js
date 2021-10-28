@@ -1,7 +1,13 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import drawSVG from 'gsap/DrawSVGPlugin';
-gsap.registerPlugin(drawSVG);
+
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+
+gsap.registerPlugin(DrawSVGPlugin);
+
+if (process.client) {
+	gsap.registerPlugin(drawSVGplugin);
+}
 
 import Sleeps from '../Sleeps';
 import Confetti from '../Svg/Confetti';

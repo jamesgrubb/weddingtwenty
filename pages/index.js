@@ -3,7 +3,10 @@ import { FindGuest } from '../components/Forms/FindGuest/FindGuest';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import Rsvp from '../components/Rsvp';
-export default function Home() {
+import DayAndNight from '../components/DayAndNight';
+import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
+export default function Home({ events }) {
+	console.log(events);
 	return (
 		<>
 			<Head>
@@ -39,7 +42,19 @@ export default function Home() {
 					Magnam modi cupiditate quas accusamus, incidunt corporis
 					voluptates id tempore ut nobis.
 				</p>
+				<DayAndNight events={events} />
 			</Section>
 		</>
 	);
+}
+
+export async function getStaticProps() {
+	const itemRecords = await table('Events').select({}).firstPage();
+	const events = getMinifiedRecords(itemRecords);
+	console.log(events);
+	return {
+		props: {
+			events: events,
+		},
+	};
 }
