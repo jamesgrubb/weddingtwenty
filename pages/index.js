@@ -5,6 +5,7 @@ import Section from '../components/Section';
 import Rsvp from '../components/Rsvp';
 import DayAndNight from '../components/DayAndNight';
 import Gifting from '../components/Gifting';
+import CWord from '../components/CWord';
 import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 export default function Home({ events }) {
 	console.log(events);
@@ -24,11 +25,7 @@ export default function Home({ events }) {
 				</p>
 			</Section>
 			<Section id='the-c-word' title='Covid'>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Magnam modi cupiditate quas accusamus, incidunt corporis
-					voluptates id tempore ut nobis.
-				</p>
+				<CWord />
 			</Section>
 			<Section id='gifts' title='Gifts'>
 				<Gifting />
@@ -46,7 +43,9 @@ export default function Home({ events }) {
 }
 
 export async function getStaticProps() {
-	const itemRecords = await table('Events').select({}).firstPage();
+	const itemRecords = await table('Events')
+		.select({ view: 'Grid view' })
+		.firstPage();
 	const events = getMinifiedRecords(itemRecords);
 	console.log(events);
 	return {
