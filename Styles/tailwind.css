@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: 'Hatton';
+		src: url('/fonts/pphatton-ultralight-webfont.woff2') format('woff2'),
+			url('/fonts/pphatton-ultralight-webfont.woff') format('woff');
+		font-weight: 200;
+	}
+
+	@font-face {
+		font-family: 'Hatton';
+		src: url('/fonts/pphatton-bold-webfont.woff2') format('woff2'),
+			url('/fonts/pphatton-bold-webfont.woff') format('woff');
+		font-weight: 700;
+	}
+
+	@font-face {
+		font-family: 'Hatton';
+		src: url('/fonts/pphatton-medium-webfont.woff2') format('woff2'),
+			url('/fonts/pphatton-medium-webfont.woff') format('woff');
+		font-weight: 500;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: 'Hatton';
+	}
+}

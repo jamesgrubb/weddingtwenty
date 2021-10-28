@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 module.exports = {
 	mode: 'jit',
 	purge: [
@@ -6,7 +8,17 @@ module.exports = {
 	],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
-		extend: {},
+		colors: {
+			gray: colors.warmGray,
+			teal: colors.teal,
+		},
+		extend: {
+			fontFamily: {
+				mono: ["'Dm Mono'", ...defaultTheme.fontFamily.mono],
+				lora: ["'Lora', serif", ...defaultTheme.fontFamily.serif],
+				hatton: ["'Hatton'", ...defaultTheme.fontFamily.serif],
+			},
+		},
 	},
 	variants: {
 		extend: {},

@@ -1,8 +1,10 @@
 import { toast } from 'react-toastify';
 import { FindGuestForm } from './FindGuestForm';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 const FindGuest = () => {
+	const [isGuest, setIsGuest] = useState(false);
 	const handleGuestData = async (guestData) => {
 		const data = {
 			...guestData,
@@ -20,6 +22,7 @@ const FindGuest = () => {
 					.then((response) => {
 						console.log(response);
 						if (response.ok) {
+							console.log('response ok', response);
 							return response.json();
 						} else {
 							throw new Error(

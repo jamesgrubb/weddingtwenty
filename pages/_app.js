@@ -1,5 +1,5 @@
 import DefaultLayout from '../components/Layouts/DefaultLayout';
-import 'tailwindcss/tailwind.css';
+import '../Styles/tailwind.css';
 
 function MyApp({ Component, pageProps }) {
 	return (
