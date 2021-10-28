@@ -30,7 +30,7 @@ const DefaultLayout = ({ children }) => {
 					</nav>
 				</div>
 			</header>
-			<main className='w-full'>{children}</main>
+			<main className='w-full bg-teal-300 space-y-36'>{children}</main>
 			<ToastContainer />
 		</div>
 	);

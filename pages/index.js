@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Section from '../components/Section';
 import Rsvp from '../components/Rsvp';
 import DayAndNight from '../components/DayAndNight';
+import Gifting from '../components/Gifting';
 import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 export default function Home({ events }) {
 	console.log(events);
@@ -30,11 +31,7 @@ export default function Home({ events }) {
 				</p>
 			</Section>
 			<Section id='gifts' title='Gifts'>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Magnam modi cupiditate quas accusamus, incidunt corporis
-					voluptates id tempore ut nobis.
-				</p>
+				<Gifting />
 			</Section>
 			<Section id='day-and-night' title='Day and night'>
 				<p>
