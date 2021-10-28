@@ -10,7 +10,7 @@
 		"@tailwindcss/typography": "^0.4.1",
 		"airtable": "^0.11.1",
 		"dayjs": "^1.10.7",
-		"gsap": "npm:@gsap/simply@^3.8.0",
+		"gsap": "file:gsap-bonus.tgz",
 		"next": "latest",
 		"next-transpile-modules": "^9.0.0",
 		"react": "^17.0.2",
