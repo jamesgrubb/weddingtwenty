@@ -24,11 +24,11 @@ function LoveStoriesForm(props) {
 					id='email'
 					name='email'
 					type='text'
-					class='input peer'
+					className='input peer'
 					placeholder='john@doe.com'
 					{...register('Name')}
 				/>
-				<label for='Name' class='label'>
+				<label for='Name' className='label'>
 					Name
 				</label>
 			</div>
