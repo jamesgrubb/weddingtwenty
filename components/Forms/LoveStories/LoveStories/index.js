@@ -1,5 +1,6 @@
 import LoveStoriesForm from '../LoveStoriesForm';
-
+import Sketch from '../../../Sketch';
+import colorTeal from '../../../../Styles/colors.module.scss';
 function LoveStories() {
 	const saveLoveStoryHandler = async (savedLoveStory) => {
 		const stories = {
@@ -21,7 +22,12 @@ function LoveStories() {
 		});
 	};
 
-	return <LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />;
+	return (
+		<>
+			<Sketch x={50} y={50} background={colorTeal} />
+			<LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />;
+		</>
+	);
 }
 
 export default LoveStories;

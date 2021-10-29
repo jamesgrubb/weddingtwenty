@@ -17,18 +17,18 @@ function LoveStoriesForm(props) {
 
 	return (
 		<form
-			className='flex flex-col items-start w-full p-8 space-y-8 font-mono bg-teal-100'
+			className='z-10 flex flex-col items-start w-full p-8 space-y-8 font-mono transform translate-x-0 bg-teal-100 '
 			onSubmit={handleSubmit(onSubmit)}>
 			<div className='relative flex flex-col items-center flex-grow w-full'>
 				<input
 					id='email'
 					name='email'
 					type='text'
-					class='input peer'
+					className='input peer'
 					placeholder='john@doe.com'
 					{...register('Name')}
 				/>
-				<label for='Name' class='label'>
+				<label htmlFor='Name' className='label'>
 					Name
 				</label>
 			</div>

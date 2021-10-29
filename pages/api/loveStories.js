@@ -2,7 +2,6 @@ import { table, minifyRecord } from './utils/Airtable';
 export default async function handler(req, res) {
 	if (req.method === 'PUT') {
 		try {
-			console.log(req.body);
 			const { Name, Story } = req.body;
 			const records = await table('LoveStories').create([
 				{

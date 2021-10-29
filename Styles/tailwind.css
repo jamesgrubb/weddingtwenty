@@ -62,3 +62,16 @@ input::placeholder {
 		@apply px-1.5 h-10 w-full font-lora border-b border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600;
 	}
 }
+
+.p5Canvas {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+}
+.p5Canvas {
+	width: 100vw;
+	height: 100vh;
+}
