@@ -17,7 +17,7 @@ function LoveStoriesForm(props) {
 
 	return (
 		<form
-			className='flex flex-col items-start w-full p-8 space-y-8 font-mono bg-teal-100'
+			className='flex flex-col items-start w-full px-1 py-8 space-y-8 font-mono bg-teal-100 sm:px-8'
 			onSubmit={handleSubmit(onSubmit)}>
 			<div className='relative flex flex-col items-center flex-grow w-full'>
 				<input
@@ -35,7 +35,7 @@ function LoveStoriesForm(props) {
 			<div className='relative flex flex-col items-start w-full min-w-0'>
 				<textarea
 					placeholder='Whats the story?'
-					className='input peer'
+					className='input peer min-h-[120px]'
 					{...register('Story', { required: true })}
 				/>
 				<label className='label' htmlFor='name'>
