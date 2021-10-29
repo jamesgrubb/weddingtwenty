@@ -28,7 +28,7 @@ function LoveStoriesForm(props) {
 					placeholder='john@doe.com'
 					{...register('Name')}
 				/>
-				<label for='Name' className='label'>
+				<label htmlFor='Name' className='label'>
 					Name
 				</label>
 			</div>
