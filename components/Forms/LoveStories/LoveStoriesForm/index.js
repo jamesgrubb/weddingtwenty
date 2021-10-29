@@ -17,7 +17,7 @@ function LoveStoriesForm(props) {
 
 	return (
 		<form
-			className='z-10 flex flex-col items-start w-full p-8 space-y-8 font-mono transform translate-x-0 bg-teal-100 '
+			className='z-10 flex flex-col items-start w-full px-1 py-8 space-y-8 font-mono transform translate-x-0 bg-teal-100 sm:px-8 '
 			onSubmit={handleSubmit(onSubmit)}>
 			<div className='relative flex flex-col items-center flex-grow w-full'>
 				<input

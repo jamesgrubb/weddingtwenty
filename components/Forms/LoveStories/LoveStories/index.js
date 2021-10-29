@@ -25,7 +25,7 @@ function LoveStories() {
 	return (
 		<>
 			<Sketch x={50} y={50} background={colorTeal} />
-			<LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />;
+			<LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />
 		</>
 	);
 }
