@@ -3,7 +3,7 @@ import LoveStories from '../../components/Forms/LoveStories/LoveStories';
 
 function LoveNotes({ stories }) {
 	return (
-		<div className='flex items-center justify-center h-full bg-red-400'>
+		<div className='flex items-center justify-center h-full '>
 			<div className='w-1/2 overflow-x-hidden rounded shadow'>
 				<LoveStories />
 			</div>
