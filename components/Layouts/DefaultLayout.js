@@ -16,7 +16,7 @@ const DefaultLayout = ({ children }) => {
 						</Link>
 					</span>
 					<nav>
-						<ul className='flex space-x-4 font-mono text-sm font-light text-gray-700 lowercase'>
+						<ul className='flex flex-wrap space-x-4 font-mono text-sm font-light text-gray-700 lowercase'>
 							{NavItems.map((item, i) => {
 								return (
 									<li key={i} className=''>
