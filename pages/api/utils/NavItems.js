@@ -23,6 +23,10 @@ const NavItems = [
 		item: 'Live',
 		link: '/live',
 	},
+	{
+		item: 'Love Stories',
+		link: '/love-stories',
+	},
 ];
 
 export { NavItems };

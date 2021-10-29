@@ -31,13 +31,9 @@ export default function Home({ events }) {
 				<Gifting />
 			</Section>
 			<Section id='day-and-night' title='Day and night'>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Magnam modi cupiditate quas accusamus, incidunt corporis
-					voluptates id tempore ut nobis.
-				</p>
 				<DayAndNight events={events} />
 			</Section>
+			<Section></Section>
 		</>
 	);
 }
