@@ -1,7 +1,11 @@
 import { useForm } from 'react-hook-form';
-
+import { FiMail } from 'react-icons/fi';
 function LoveStoriesForm(props) {
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
 	const onSubmit = (data) => {
 		const fields = {
@@ -9,35 +13,48 @@ function LoveStoriesForm(props) {
 			Story: data.Story,
 		};
 		props.onGetLoveStory(fields);
-		console.log(fields);
 	};
 
 	return (
 		<form
-			className='flex flex-col w-full min-w-0 font-mono bg-teal-100 sm:w-1/2'
+			className='flex flex-col items-start w-full p-8 font-mono bg-teal-100'
 			onSubmit={handleSubmit(onSubmit)}>
-			<ul className='flex flex-wrap space-y-2'>
-				<li className='flex-grow w-100% flex flex-col items-center p-1'>
-					<label htmlFor='name'>Name</label>
+			<ul className='flex flex-wrap w-full space-y-8 sm:space-y-0 sm:space-x-4'>
+				<li className='relative flex-grow w-100% flex flex-col items-center'>
 					<input
-						className='w-full px-3 py-2 border-gray-300 shadow focus:border-gray-600 focus:outline-none focus:ring-1 '
+						id='email'
+						name='email'
 						type='text'
+						class='input peer'
+						placeholder='john@doe.com'
 						{...register('Name')}
 					/>
+					<label for='Name' class='label'>
+						Name
+					</label>
 				</li>
-				<li className='min-w-0 flex-grow w-100% flex flex-col items-center p-1'>
-					<label htmlFor='name'>Name</label>
-					<input
-						className='w-full px-3 py-2 border-gray-300 shadow focus:border-gray-600 focus:outline-none focus:ring-1'
-						type='text'
-						{...register('Story')}
+				<li className='relative min-w-0 w-100% flex flex-col items-start'>
+					<textarea
+						placeholder='Whats the story?'
+						className='input peer'
+						{...register('Story', { required: true })}
 					/>
+					<label className='label' htmlFor='name'>
+						Name
+					</label>
+					{errors.Story ? (
+						<strong className='my-2 text-sm italic font-light text-red-400 peer'>
+							Lost for words?
+						</strong>
+					) : (
+						''
+					)}
 				</li>
 			</ul>
 			<button
-				className='px-3 py-2 text-teal-100 uppercase bg-gray-700 shadow font-hatton hover:bg-gray-400'
+				className='space-x-2 inline-flex mt-3 items-center px-3 pt-2 min-h-[44px] pb-2 text-teal-100 text-center bg-gray-700 shadow font-mono font-light hover:bg-gray-400'
 				type='submit'>
-				send my story
+				<span>send my story</span> {<FiMail />}
 			</button>
 		</form>
 	);

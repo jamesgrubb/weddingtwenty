@@ -8,11 +8,12 @@ module.exports = {
 	],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
-		colors: {
-			gray: colors.warmGray,
-			teal: colors.teal,
-		},
 		extend: {
+			colors: {
+				gray: colors.warmGray,
+				teal: colors.teal,
+				red: colors.rose,
+			},
 			fontFamily: {
 				mono: ["'Dm Mono'", ...defaultTheme.fontFamily.mono],
 				lora: ["'Lora', serif", ...defaultTheme.fontFamily.serif],
@@ -24,7 +25,7 @@ module.exports = {
 		extend: {},
 	},
 	plugins: [
-		require('@tailwindcss/forms'),
+		// require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
 		require('tailwindcss-breakpoints-inscpector'),
 	],

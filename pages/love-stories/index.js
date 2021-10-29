@@ -5,9 +5,7 @@ function LoveNotes({ stories }) {
 	console.log(`stories`, stories);
 	return (
 		<>
-			<div className='flex justify-center w-full h-screen mt-48 bg-teal-900'>
-				<LoveStories />
-			</div>
+			<LoveStories />
 		</>
 	);
 }

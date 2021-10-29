@@ -36,7 +36,9 @@
 		font-family: 'Hatton';
 	}
 }
-
+input::placeholder {
+	display: none !important;
+}
 .prose ul li:before {
 	display: none !important;
 }
@@ -47,4 +49,16 @@
 #__next {
 	height: 100%;
 	min-height: 100%;
+}
+@layer components {
+	.label {
+		@apply font-lora absolute px-1.5 left-0 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-5 pointer-events-none peer-focus:text-gray-600 peer-focus:text-sm;
+	}
+	.label:not(:empty) {
+		@apply -top-5;
+	}
+
+	.input {
+		@apply px-1.5 h-10 w-full font-lora border-b border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600;
+	}
 }

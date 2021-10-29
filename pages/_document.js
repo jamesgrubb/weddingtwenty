@@ -15,9 +15,12 @@ class WeddingDocument extends Document {
 						crossOrigin='true'
 					/>
 					<link
-						href='https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;500&family=Lora:ital@0;1&display=swap'
+						href='https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;1,300;0,500;1,500&family=Lora:ital@0;1&display=swap'
 						rel='stylesheet'
 					/>
+					<link
+						href='https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,500;1,300;1,500&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+						rel='stylesheet'></link>
 				</Head>
 				<body>
 					<Main />

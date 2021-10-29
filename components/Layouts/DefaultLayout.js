@@ -6,7 +6,7 @@ import Brand from '../Svg/Brand';
 const DefaultLayout = ({ children }) => {
 	return (
 		<div className='flex flex-col min-h-screen mx-auto bg-teal-300 flex-nowrap'>
-			<header className='fixed top-0 left-0 right-0 bg-opacity-100 '>
+			<header className='top-0 left-0 right-0 bg-opacity-100 '>
 				<div className='container flex items-baseline justify-between w-full py-8 mx-auto space-x-8 border-b border-gray-700 '>
 					<span className='relative flex justify-end w-16 text-base text-gray-700 uppercase hover:tex t-gray-900 after:-right-2 font-hatton after:border after:border-gray-700 after:h-full after:absolute'>
 						<Link href='/'>
@@ -33,7 +33,6 @@ const DefaultLayout = ({ children }) => {
 			<main className='w-full h-full min-h-full bg-teal-300 space-y-36'>
 				{children}
 			</main>
-			<ToastContainer />
 		</div>
 	);
 };

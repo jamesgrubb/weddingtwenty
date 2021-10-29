@@ -15,15 +15,13 @@ function LoveStories() {
 			console.log(response);
 			if (response.ok) {
 				console.log('response ok', await response.json());
+			} else {
+				console.error(response.status);
 			}
 		});
 	};
 
-	return (
-		<div className='h-full'>
-			<LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />
-		</div>
-	);
+	return <LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />;
 }
 
 export default LoveStories;
