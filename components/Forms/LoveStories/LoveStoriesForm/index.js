@@ -17,9 +17,9 @@ function LoveStoriesForm(props) {
 
 	return (
 		<form
-			className='z-10 flex-col items-center block h-full min-h-full px-1 py-8 space-y-8 font-mono transform translate-x-0 sm:flex sm:p-8 sm:items-start sm:px-8 sm:py-8'
+			className='z-10 flex-col items-center justify-start block h-full px-1 py-8 space-y-8 font-mono transform translate-x-0 bg-red-100 sm:flex sm:p-8 sm:items-start sm:px-8 sm:py-8'
 			onSubmit={handleSubmit(onSubmit)}>
-			<div className='relative flex flex-col items-center flex-grow w-full'>
+			<div className='relative flex flex-col items-center w-full'>
 				<input
 					id='email'
 					name='email'

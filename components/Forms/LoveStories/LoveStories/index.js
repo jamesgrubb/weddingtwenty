@@ -26,10 +26,10 @@ function LoveStories() {
 	return (
 		<>
 			<Sketch x={50} y={50} background={colorTeal} />
-			<div className='z-10 flex flex-wrap items-stretch w-full transform translate-x-0 bg-teal-800 border-b-2 border-teal-900'>
+			<div className='z-10 flex-wrap items-stretch block w-full transform translate-x-0 bg-teal-800 border-b-2 border-teal-900 sm:flex'>
 				<div className='relative flex flex-col items-center p-2 leading-relaxed bg-teal-400 sm:p-8 bg-opacity-80 font-lora lg:w-1/2'>
 					<CloudinaryContext
-						className='transform border-4 border-teal-300 rounded-full'
+						className='mt-6 transform border-teal-300 rounded-full border-6'
 						cloudName='makingthings'>
 						<Image alt='Janey Briers' publicId='wedding/jane'>
 							<Transformation

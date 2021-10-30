@@ -90,20 +90,20 @@ const Hero = () => {
 	});
 
 	return (
-		<div className='flex flex-col items-center justify-center w-screen min-h-screen space-y-16 bg-teal-300'>
-			<div className='container relative flex flex-col items-center justify-center mt-40 space-y-4 uppercase lg:w-full md:items-end'>
-				<h2 className='w-full text-5xl prose-sm text-center text-teal-100 md:text-right lg:w-2/3 sm:text-5xl font-hatton'>
+		<div className='flex flex-col items-center w-screen h-screen justify-evenly'>
+			<div className='container flex flex-col items-center justify-center py-16 pb-16 mt-16 space-y-4 uppercase sm:py-0 sm:pb-20 lg:w-full md:items-end sm:mt-20'>
+				<h2 className='w-full text-3xl prose-sm text-center text-teal-100 md:text-right lg:w-2/3 sm:text-5xl font-hatton'>
 					Celeb<div className='inline-flex'>r</div>
 					<div className='inline-flex'>r</div>
 					<div className='inline-flex'>r</div>
 					<div className='inline-flex'>r</div>ate
 				</h2>
-				<figure className=' pointer-events-none relative flex justify-center w-1/5 md:w-full md:max-w-[200px] p-0 m-0 md:absolute left-0 lg:left-1/4 bottom-0 '>
+				<figure className='pointer-events-none relative flex justify-center w-2/5 h-full md:w-full md:max-w-[16vmax] p-0 m-0 md:absolute left-0 md:top-0 lg:left-1/4 bottom-0 '>
 					<svg
-						className='absolute overflow-visible bottom-3/4 -left-4'
+						className='absolute overflow-visible bottom-full -left-4'
 						xmlns='http://www.w3.org/2000/svg'
-						width='100%'
-						height='100%'
+						width='60%'
+						height='60%'
 						fill='none'
 						viewBox='0 0 147 414'>
 						<g
@@ -118,6 +118,7 @@ const Hero = () => {
 						</g>
 					</svg>
 					<svg
+						className=''
 						xmlns='http://www.w3.org/2000/svg'
 						width='100%'
 						height='100%'
@@ -547,7 +548,7 @@ const Hero = () => {
 							fill='#0FB5FD'></circle>
 					</svg>
 				</figure>
-				<h1 className='w-full text-5xl text-center text-gray-500 md:text-right md:w-1/2 lg:w-1/2 lg:text-7xl'>
+				<h1 className='w-full text-3xl text-center text-gray-500 md:text-right md:w-1/2 lg:w-1/2 lg:text-7xl'>
 					james and tina's wedding
 				</h1>
 				<div className='w-2/3 text-center md:text-right'>
