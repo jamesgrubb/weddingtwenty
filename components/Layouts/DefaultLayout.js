@@ -1,8 +1,9 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NavItems } from '../../pages/api/utils/NavItems';
 import Link from 'next/link';
 import Brand from '../Svg/Brand';
+import Nav from '../Nav';
+
 const DefaultLayout = ({ children }) => {
 	return (
 		<div className='flex flex-col h-full min-h-screen mx-auto bg-teal-300 flex-nowrap'>
@@ -15,19 +16,7 @@ const DefaultLayout = ({ children }) => {
 							</a>
 						</Link>
 					</span>
-					<nav>
-						<ul className='flex flex-wrap space-x-4 font-mono text-sm font-light text-gray-700 lowercase'>
-							{NavItems.map((item, i) => {
-								return (
-									<li key={i} className=''>
-										<Link href={item.link}>
-											{item.item}
-										</Link>
-									</li>
-								);
-							})}
-						</ul>
-					</nav>
+					<Nav />
 				</div>
 			</header>
 			<main className='w-full h-full min-h-full bg-teal-300 space-y-36'>
