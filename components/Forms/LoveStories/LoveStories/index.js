@@ -27,9 +27,9 @@ function LoveStories() {
 		<>
 			<Sketch x={50} y={50} background={colorTeal} />
 			<div className='z-10 flex flex-wrap items-stretch w-full transform translate-x-0 bg-teal-800 border-b-2 border-teal-900'>
-				<div className='relative flex flex-col items-center p-8 leading-relaxed bg-teal-400 bg-opacity-80 font-lora lg:w-1/2 '>
+				<div className='relative flex flex-col items-center p-2 leading-relaxed bg-teal-400 sm:p-8 bg-opacity-80 font-lora lg:w-1/2'>
 					<CloudinaryContext
-						className='absolute top-0 transform -translate-y-1/2 border-4 border-teal-300 rounded-full'
+						className='transform border-4 border-teal-300 rounded-full'
 						cloudName='makingthings'>
 						<Image alt='Janey Briers' publicId='wedding/jane'>
 							<Transformation
@@ -42,7 +42,7 @@ function LoveStories() {
 							/>
 						</Image>
 					</CloudinaryContext>
-					<p className='mt-4'>
+					<p className='mt-10'>
 						Hello there! My name is Janey Briers. I’m James and
 						Tina’s wedding celebrant, and I need your help! Our
 						bride and groom don’t want anything too traditional on
