@@ -44,6 +44,7 @@ export async function getStaticProps() {
 		.firstPage();
 	const events = getMinifiedRecords(itemRecords);
 	console.log(events);
+	console.log(events);
 	return {
 		props: {
 			events: events,
