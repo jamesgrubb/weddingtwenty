@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+
 module.exports = {
 	mode: 'jit',
 	purge: [
@@ -8,6 +9,16 @@ module.exports = {
 	],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
+		container: (theme) => ({
+			center: true,
+			padding: theme('spacing.4'),
+			screens: {
+				sm: '640px',
+				md: '768px',
+				lg: '1024px',
+			},
+		}),
+
 		extend: {
 			colors: {
 				gray: colors.warmGray,

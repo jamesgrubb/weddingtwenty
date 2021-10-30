@@ -29,7 +29,7 @@ function LoveStoriesForm(props) {
 					{...register('Name')}
 				/>
 				<label htmlFor='Name' className='label'>
-					Name
+					name
 				</label>
 			</div>
 			<div className='relative flex flex-col items-start w-full min-w-0'>
@@ -39,7 +39,7 @@ function LoveStoriesForm(props) {
 					{...register('Story', { required: true })}
 				/>
 				<label className='label' htmlFor='name'>
-					Name
+					your wise words please...
 				</label>
 				{errors.Story ? (
 					<strong className='my-2 text-sm italic font-light text-red-400 peer'>
