@@ -552,7 +552,7 @@ const Hero = () => {
 				</h1>
 				<div className='w-2/3 text-center md:text-right'>
 					<p className='text-2xl uppercase font-hatton'>
-						<date>28 December 2021</date>
+						28 December 2021
 					</p>
 					<p className='uppercase font-hatton'>
 						<Sleeps className='font-lora' /> sleeps to go
