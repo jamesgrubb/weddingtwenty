@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 function Nav() {
 	const router = useRouter();
 	const { asPath } = router;
-
-	console.log(`router`, router);
 	const linkStyles =
 		'relative flex hover:after:transition-all after:scale-x-0 after:absolute after:w-full after:border-b after:border-gray-900 hover:after:scale-x-100 hover:text-gray-900 hover:after:absolute hover:after:w-full hover:after:border-b hover:after:border-gray-900';
 	const LinkStylesActive =

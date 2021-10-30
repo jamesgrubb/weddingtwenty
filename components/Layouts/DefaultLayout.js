@@ -8,7 +8,7 @@ import { FiAlignCenter } from 'react-icons/fi';
 const DefaultLayout = ({ children }) => {
 	return (
 		<div className='flex flex-col items-center h-full min-h-screen bg-teal-300 flex-nowrap'>
-			<div className='fixed left-0 right-0 w-full bg-teal-50'>
+			<div className='fixed left-0 right-0 z-10 w-full bg-teal-50'>
 				<header className='z-10 flex items-center justify-between w-full p-4 transform translate-x-0 md:items-baseline md:px-0 md:container'>
 					<div className='flex w-24 sm:w-36 md:hidden'>
 						<svg
