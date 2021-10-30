@@ -12,9 +12,8 @@ function LoveStories() {
 				'Content-Type': 'application/json',
 			},
 		}).then(async (response) => {
-			console.log(response);
 			if (response.ok) {
-				console.log('response ok', await response.json());
+				console.log('response ok');
 			} else {
 				console.error(response.status);
 			}

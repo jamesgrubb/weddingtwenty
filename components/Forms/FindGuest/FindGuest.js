@@ -20,9 +20,7 @@ const FindGuest = () => {
 					},
 				})
 					.then((response) => {
-						console.log(response);
 						if (response.ok) {
-							console.log('response ok', response);
 							return response.json();
 						} else {
 							throw new Error(

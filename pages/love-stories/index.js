@@ -1,8 +1,7 @@
 import { table, getMinifiedRecords } from '../api/utils/Airtable';
 import LoveStories from '../../components/Forms/LoveStories/LoveStories';
 
-function LoveNotes({ stories }) {
-	console.log(`stories`, stories);
+function LoveNotes() {
 	return (
 		<div className='flex items-center justify-center h-full'>
 			<div className='w-[95vw] overflow-x-hidden rounded shadow sm:w-1/2'>
@@ -19,7 +18,7 @@ export const getStaticProps = async () => {
 		.select({ view: 'Grid view' })
 		.firstPage();
 	const minifiedRecords = getMinifiedRecords(records);
-	console.log(minifiedRecords);
+
 	return {
 		props: {
 			stories: minifiedRecords.map((record) => record),
