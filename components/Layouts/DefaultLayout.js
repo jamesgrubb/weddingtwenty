@@ -1,4 +1,6 @@
 import { ToastContainer } from 'react-toastify';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import Brand from '../Svg/Brand';
@@ -6,6 +8,9 @@ import Nav from '../Nav';
 import { FiAlignCenter } from 'react-icons/fi';
 
 const DefaultLayout = ({ children }) => {
+	const navRef = useRef();
+	const [toggleNav, setToggleNav] = useState(false);
+	useEffect(() => {}, [toggleNav]);
 	return (
 		<div className='flex flex-col items-center h-full min-h-screen bg-teal-300 flex-nowrap'>
 			<div className='fixed left-0 right-0 z-10 w-full bg-teal-50'>
@@ -450,7 +455,11 @@ const DefaultLayout = ({ children }) => {
 					</div>
 					<Nav />
 					<div className='md:hidden'>
-						<button className='btn'>
+						<button
+							onClick={() => {
+								setToggleNav(!toggleNav);
+							}}
+							className='btn'>
 							<span>menu</span>
 							<FiAlignCenter />
 						</button>
@@ -461,6 +470,7 @@ const DefaultLayout = ({ children }) => {
 			<main className='w-full h-full min-h-full bg-teal-300 space-y-36'>
 				{children}
 			</main>
+			<ToastContainer />
 		</div>
 	);
 };

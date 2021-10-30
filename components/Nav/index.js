@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavItems } from '../../pages/api/utils/NavItems';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
