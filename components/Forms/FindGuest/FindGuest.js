@@ -21,6 +21,10 @@ const FindGuest = () => {
 				})
 					.then((response) => {
 						if (response.ok) {
+<<<<<<< HEAD
+=======
+							console.log('response ok');
+>>>>>>> p5
 							return response.json();
 						} else {
 							throw new Error(

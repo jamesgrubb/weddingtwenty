@@ -12,7 +12,6 @@ const sleeps = () => {
 	const date2 = now.format('YYYY-MM-DD');
 
 	let df4 = date1.diff(date2, 'day');
-	console.log(df4);
 	return df4;
 };
 
