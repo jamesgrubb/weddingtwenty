@@ -13,7 +13,7 @@ import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import RSVP from '../components/Rsvp';
-import Cta from '../components/Rsvp/Cta';
+import Cta from '../components/Rsvp/CallToAction';
 export default function Home({ events }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 	console.log(showDialog);
