@@ -12,6 +12,7 @@ import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 import Covid from '../components/Content/Covid';
 import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
+import RSVP from '../components/RSVP';
 
 export default function Home({ events }) {
 	const [showDialog, setShowDialog] = React.useState(false);
@@ -24,7 +25,7 @@ export default function Home({ events }) {
 				<title>James&amp;Tinas Wedding</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<button onclick={open}>RSVP</button>
+			<button onClick={open}>RSVP</button>
 
 			<CTA handleClick={open} />
 			<Hero />
@@ -40,13 +41,13 @@ export default function Home({ events }) {
 				<CWord />
 			</Section>
 			<Section id='gifts' title='Gifts'>
-				{/* <Covid /> */}
 				<Gifting />
 			</Section>
 
 			<DialogOverlay isOpen={showDialog} onDismiss={close}>
-				<DialogContent>
-					<Accept />
+				<DialogContent aria-labelledby='Modal'>
+					<RSVP />
+
 					<button onClick={close}>Got it.</button>
 				</DialogContent>
 			</DialogOverlay>
@@ -62,8 +63,7 @@ export async function getStaticProps() {
 		.select({ view: 'Grid view' })
 		.firstPage();
 	const events = getMinifiedRecords(itemRecords);
-	console.log(events);
-	console.log(events);
+
 	return {
 		props: {
 			events: events,

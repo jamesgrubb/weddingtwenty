@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import AcceptForm from '../../Forms/AcceptForm';
 import Night from '../Night';
 import DayAndNight from '../DayAndNight';
 export default function Accept() {
@@ -8,10 +8,8 @@ export default function Accept() {
 
 	return (
 		<div className='flex flex-col w-full prose-sm flex-nowrap sm:prose-lg'>
-			<p className=''>
-				<Night />
-				<DayAndNight />
-			</p>
+			<Night />
+			<DayAndNight />
 		</div>
 	);
 }

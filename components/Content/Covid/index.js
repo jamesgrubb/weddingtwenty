@@ -8,7 +8,7 @@ const Component = (props) => {
 	if (error)
 		return <div className='error'>There was an error fetching data</div>;
 	if (!data) return <div className=''>Loading</div>;
-	console.log(data);
+
 	return <div>Fetcher</div>;
 };
 

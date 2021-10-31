@@ -9,7 +9,7 @@ import { FiAlignCenter } from 'react-icons/fi';
 
 const DefaultLayout = ({ children }) => {
 	const [toggleNav, setToggleNav] = useState(false);
-	console.log(toggleNav);
+
 	const navRef = useRef();
 	useEffect(() => {
 		// const tl = gsap.timeline();

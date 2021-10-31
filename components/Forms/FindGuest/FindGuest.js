@@ -42,13 +42,7 @@ const FindGuest = () => {
 			);
 
 			const guests = await result.json();
-			console.log(
-				'🚀 ~ file: FindGuest.js ~ line 18 ~ handleGuestData ~ guests',
-				guests
-			);
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	return (
