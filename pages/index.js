@@ -16,6 +16,7 @@ import RSVP from '../components/RSVP';
 
 export default function Home({ events }) {
 	const [showDialog, setShowDialog] = React.useState(false);
+	console.log(showDialog);
 	const open = () => setShowDialog(true);
 	const close = () => setShowDialog(false);
 
@@ -26,7 +27,7 @@ export default function Home({ events }) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			{/* <CTA handleClick={open} /> */}
+			<CTA handleClick={open} />
 			<Hero />
 
 			<Section id='welcome' title='Welcome'>
@@ -43,13 +44,13 @@ export default function Home({ events }) {
 				<Gifting />
 			</Section>
 
-			{/* <DialogOverlay isOpen={showDialog} onDismiss={close}>
+			<DialogOverlay isOpen={showDialog} onDismiss={close}>
 				<DialogContent aria-labelledby='Modal'>
 					<RSVP />
 
 					<button onClick={close}>Got it.</button>
 				</DialogContent>
-			</DialogOverlay> */}
+			</DialogOverlay>
 			<Section id='day-and-night' title='Day and night'>
 				<DayAndNight events={events} />
 			</Section>
