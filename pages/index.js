@@ -1,16 +1,16 @@
 import React from 'react';
 import Head from 'next/head';
-import { FindGuest } from '../components/Forms/FindGuest/FindGuest';
+
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import CTA from '../components/RSVP/CTA';
 import DayAndNight from '../components/DayAndNight';
 import Gifting from '../components/Gifting';
 import CWord from '../components/CWord';
-import Accept from '../components/RSVP/Accept';
+
 import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
-import Covid from '../components/Content/Covid';
-import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+
+import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import RSVP from '../components/RSVP';
 
