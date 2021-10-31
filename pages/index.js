@@ -3,10 +3,11 @@ import Head from 'next/head';
 import { FindGuest } from '../components/Forms/FindGuest/FindGuest';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
-import Rsvp from '../components/RSVP';
+import CTA from '../components/RSVP/CTA';
 import DayAndNight from '../components/DayAndNight';
 import Gifting from '../components/Gifting';
 import CWord from '../components/CWord';
+import Accept from '../components/RSVP/Accept';
 import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 import Covid from '../components/Content/Covid';
 import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
@@ -17,8 +18,6 @@ export default function Home({ events }) {
 	const open = () => setShowDialog(true);
 	const close = () => setShowDialog(false);
 
-	console.log(events);
-	const handleRsvp = (handleReceivedRsvpData) => {};
 	return (
 		<>
 			<Head>
@@ -27,7 +26,7 @@ export default function Home({ events }) {
 			</Head>
 			<button onclick={open}>RSVP</button>
 
-			<Rsvp handleClick={open} />
+			<CTA handleClick={open} />
 			<Hero />
 			<button onClick={open}>Show Dialog</button>
 			<Section id='welcome' title='Welcome'>
@@ -46,18 +45,8 @@ export default function Home({ events }) {
 			</Section>
 
 			<DialogOverlay isOpen={showDialog} onDismiss={close}>
-				<DialogContent
-					className='w-full bg-teal-900'
-					// style={{
-					// 	border: 'solid 5px hsla(0, 0%, 0%, 0.5)',
-					// 	borderRadius: '10px',
-					// }}
-				>
-					<p>I have a nice border now.</p>
-					<p>
-						Note that we could have used the simpler{' '}
-						<code>Dialog</code> instead.
-					</p>
+				<DialogContent>
+					<Accept />
 					<button onClick={close}>Got it.</button>
 				</DialogContent>
 			</DialogOverlay>
