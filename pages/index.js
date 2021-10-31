@@ -25,11 +25,10 @@ export default function Home({ events }) {
 				<title>James&amp;Tinas Wedding</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<button onClick={open}>RSVP</button>
 
-			<CTA handleClick={open} />
+			{/* <CTA handleClick={open} /> */}
 			<Hero />
-			<button onClick={open}>Show Dialog</button>
+
 			<Section id='welcome' title='Welcome'>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -44,13 +43,13 @@ export default function Home({ events }) {
 				<Gifting />
 			</Section>
 
-			<DialogOverlay isOpen={showDialog} onDismiss={close}>
+			{/* <DialogOverlay isOpen={showDialog} onDismiss={close}>
 				<DialogContent aria-labelledby='Modal'>
 					<RSVP />
 
 					<button onClick={close}>Got it.</button>
 				</DialogContent>
-			</DialogOverlay>
+			</DialogOverlay> */}
 			<Section id='day-and-night' title='Day and night'>
 				<DayAndNight events={events} />
 			</Section>
