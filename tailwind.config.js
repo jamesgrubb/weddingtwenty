@@ -36,8 +36,10 @@ module.exports = {
 		extend: {},
 	},
 	plugins: [
-		require('@tailwindcss/forms')({ strategy: 'class' }),
+		require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
 		require('tailwindcss-breakpoints-inscpector'),
 	],
 };
+
+//({ strategy: 'class' })
