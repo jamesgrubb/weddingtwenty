@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import Hero from '../components/Hero';
 import Section from '../components/Section';
-import CTA from '../components/RSVP/CTA';
+import CTA from '../components/Rsvp/Cta';
 import DayAndNight from '../components/DayAndNight';
 import Gifting from '../components/Gifting';
 import CWord from '../components/CWord';
@@ -12,7 +12,7 @@ import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
-import RSVP from '../components/RSVP';
+import RSVP from '../components/Rsvp';
 
 export default function Home({ events }) {
 	const [showDialog, setShowDialog] = React.useState(false);
