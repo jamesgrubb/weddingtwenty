@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import Hero from '../components/Hero';
 import Section from '../components/Section';
-import CTA from '../components/Rsvp/Cta';
+
 import DayAndNight from '../components/DayAndNight';
 import Gifting from '../components/Gifting';
 import CWord from '../components/CWord';
@@ -13,7 +13,7 @@ import { table, getMinifiedRecords } from '../pages/api/utils/Airtable';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import RSVP from '../components/Rsvp';
-
+import Cta from '../components/Rsvp/Cta';
 export default function Home({ events }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 	console.log(showDialog);
@@ -26,8 +26,8 @@ export default function Home({ events }) {
 				<title>James&amp;Tinas Wedding</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
+			<Cta handleClick={open} />
 
-			<CTA handleClick={open} />
 			<Hero />
 
 			<Section id='welcome' title='Welcome'>
