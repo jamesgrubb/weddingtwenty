@@ -78,26 +78,49 @@ export default function RSVP() {
 			// 	}
 			// });
 
-			// setGuestData((previousState) => {
-			// 	if (guest.length > 0) {
-			// 		return {
-			// 			...previousState,
-			// 			id: guest[0].id,
-			// 			Invitation: guest[0].fields.Invitation,
-			// 		};
-			// 	}
-			// });
+			setGuestData((previousState) => {
+				if (guest.length > 0) {
+					return {
+						...previousState,
+						id: guest[0].id,
+						Invitation: guest[0].fields.Invitation,
+					};
+				}
+			});
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	useEffect(() => {
-		async function updateGuest() {}
+		async function updateGuest() {
+			try {
+				const accept = await fetch('/api/guest', {
+					method: 'PUT',
+					body: JSON.stringify({
+						id: guestData.id,
+						fields: {
+							Attending: guestData.Accept,
+						},
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+				console.log(await accept.json());
+			} catch (error) {
+				console.error(error);
+			}
+		}
+
+		if (guestData.id != undefined) {
+			updateGuest();
+		}
+
 		/**
 		 * Console effects of switch statement
 		 */
-		// console.log('from useEffect guestData', guestData);
+		console.log('from useEffect guestData', guestData);
 		console.log('from useEffect accepted', accepted);
 		console.log('from useEffect declined', declined);
 	}, [guestData, accepted, declined]);
@@ -111,10 +134,10 @@ export default function RSVP() {
 				{accepted != null && accepted.Invitation === 'DayAndNight' && (
 					<p>Accepted Day</p>
 				)}
-				{declined != null && <p>Declined</p>}
 				{accepted != null && accepted.Invitation === 'Night' && (
 					<p>Accepted Night</p>
 				)}
+				{declined != null && <p>Declined</p>}
 			</div>
 		</>
 	);
