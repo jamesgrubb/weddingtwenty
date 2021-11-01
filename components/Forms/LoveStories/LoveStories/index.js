@@ -2,12 +2,21 @@ import LoveStoriesForm from '../LoveStoriesForm';
 import Sketch from '../../../Sketch';
 import colorTeal from '../../../../Styles/colors.module.scss';
 import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
+import { toast } from 'react-toastify';
 
 function LoveStories() {
 	const saveLoveStoryHandler = async (savedLoveStory) => {
 		const stories = {
 			...savedLoveStory,
 		};
+
+		// const responsb = await toast.promise(fetch('A_URL'), {
+		// 	pending: 'Promise is pending',
+		// 	success: 'Promise resolved 👌',
+		// 	error: 'Promise rejected 🤯',
+		// });
+		// console.log(responsb);
+
 		const response = await fetch('/api/loveStories', {
 			method: 'PUT',
 			body: JSON.stringify(stories),
@@ -16,8 +25,12 @@ function LoveStories() {
 			},
 		}).then(async (response) => {
 			if (response.ok) {
+				toast.dismiss();
+				toast.success('Message received');
 				console.log('response ok');
 			} else {
+				toast.dismiss();
+				toast.error('UhOh');
 				console.error(response.status);
 			}
 		});

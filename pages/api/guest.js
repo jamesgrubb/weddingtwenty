@@ -19,11 +19,11 @@ export default async function handler(req, res) {
 			break;
 		default:
 			try {
-				const { name, surname } = await req.body;
-				console.log(name, surname);
+				const { Name, Surname } = await req.body;
+				console.log(Name, Surname);
 				const records = await table('Guests')
 					.select({
-						filterByFormula: `AND(({Name}='${name}'),({Surname}='${surname}'))`,
+						filterByFormula: `AND(({Name}='${Name}'),({Surname}='${Surname}'))`,
 					})
 					.firstPage();
 				console.log(records);

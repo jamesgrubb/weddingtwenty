@@ -13,6 +13,7 @@ export default function Accept(props) {
 	const watchName = watch('Name');
 
 	const onSubmit = (data) => {
+		console.log(data);
 		props.onGetSavedGuestDetails(data);
 	};
 
@@ -56,14 +57,14 @@ export default function Accept(props) {
 					''
 				)}
 			</div>
-			<div className='flex flex-wrap w-full space-x-3 last:text-black '>
+			{/* <div className='flex flex-wrap w-full space-x-3 last:text-black '>
 				<label
 					htmlFor='accept'
 					className='inline-flex items-center gap-2 font-lora '>
 					<input
 						id='accept'
 						className='text-teal-600 form-radio'
-						{...register('Accept', { required: true })}
+						{...register('Accept')}
 						name='Accept'
 						type='radio'
 						value='Accept'
@@ -76,7 +77,7 @@ export default function Accept(props) {
 					<input
 						className='text-teal-600 form-radio'
 						id='decline'
-						{...register('Decline', { required: true })}
+						{...register('Decline')}
 						name='Accept'
 						type='radio'
 						value='Decline'
@@ -90,7 +91,7 @@ export default function Accept(props) {
 				) : (
 					''
 				)}
-			</div>
+			</div> */}
 			<button className='btn' type='submit'>
 				<span>Submit</span> {<FiMail />}
 			</button>

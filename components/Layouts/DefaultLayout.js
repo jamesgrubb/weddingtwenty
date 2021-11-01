@@ -482,8 +482,8 @@ const DefaultLayout = ({ children }) => {
 
 			<main className='w-full min-h-full mt-16 bg-teal-300 md:mt-20 '>
 				{children}
+				<ToastContainer />
 			</main>
-			<ToastContainer />
 		</div>
 	);
 };

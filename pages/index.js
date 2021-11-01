@@ -43,14 +43,16 @@ export default function Home({ events }) {
 			<Section id='gifts' title='Gifts'>
 				<Gifting />
 			</Section>
+			{showDialog && (
+				<DialogOverlay onDismiss={close}>
+					<DialogContent aria-labelledby='Modal'>
+						<RSVP />
 
-			<DialogOverlay isOpen={showDialog} onDismiss={close}>
-				<DialogContent aria-labelledby='Modal'>
-					<RSVP />
+						<button onClick={close}>Got it.</button>
+					</DialogContent>
+				</DialogOverlay>
+			)}
 
-					<button onClick={close}>Got it.</button>
-				</DialogContent>
-			</DialogOverlay>
 			<Section id='day-and-night' title='Day and night'>
 				<DayAndNight events={events} />
 			</Section>
