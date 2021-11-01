@@ -15,6 +15,22 @@ export default function RSVP() {
 		console.log(`initial state "guestData"`, guestData);
 		console.log(`Raw data from`, savedGuestDetails);
 		setGuestData(savedGuestDetails);
+		const { Accept } = savedGuestDetails;
+
+		/**
+		 * Switch Statement to save accepted and not accepted
+		 */
+		switch (Accept) {
+			case 'Accept':
+				setAccepted(savedGuestDetails);
+				break;
+			case 'Decline':
+				setDeclined(savedGuestDetails);
+				break;
+			default:
+				setGuestData(savedGuestDetails);
+		}
+
 		try {
 			const result = await fetch('/api/guest', {
 				method: 'POST',
@@ -25,9 +41,13 @@ export default function RSVP() {
 			});
 			const guest = await result.json();
 			console.log(`response from api`, guest);
-			await setGuestData((previousState) => {
+			setGuestData((previousState) => {
 				if (guest.length > 0) {
-					return { ...previousState, id: guest[0].id };
+					return {
+						...previousState,
+						id: guest[0].id,
+						Invitation: guest[0].fields.Invitation,
+					};
 				}
 			});
 		} catch (error) {
@@ -37,7 +57,12 @@ export default function RSVP() {
 
 	useEffect(() => {
 		async function fetchData() {}
-		console.log('from useEffect', guestData);
+		/**
+		 * Console effects of switch statement
+		 */
+		console.log('from useEffect guestData', guestData);
+		console.log('from useEffect accepted', accepted);
+		console.log('from useEffect declined', declined);
 	}, [guestData]);
 
 	return (
