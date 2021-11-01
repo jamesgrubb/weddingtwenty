@@ -1,14 +1,26 @@
 import React from 'react';
 import { FiMail } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { object, string } from 'yup';
+
+const validationSchema = object().shape({
+	Accept: string().required(),
+	Name: string().required(),
+	Surname: string().required(),
+});
 
 export default function Accept(props) {
-	const {
-		register,
-		handleSubmit,
-		watch,
-		formState: { errors },
-	} = useForm();
+	const { register, handleSubmit, watch, formState } = useForm({
+		resolver: yupResolver(validationSchema),
+		defaultValues: {
+			Accept: '',
+			Name: '',
+			Surname: '',
+		},
+	});
+
+	const { errors } = formState;
 
 	const watchName = watch('Name');
 
@@ -57,7 +69,7 @@ export default function Accept(props) {
 					''
 				)}
 			</div>
-			{/* <div className='flex flex-wrap w-full space-x-3 last:text-black '>
+			<div className='flex flex-wrap w-full space-x-3 last:text-black '>
 				<label
 					htmlFor='accept'
 					className='inline-flex items-center gap-2 font-lora '>
@@ -77,7 +89,7 @@ export default function Accept(props) {
 					<input
 						className='text-teal-600 form-radio'
 						id='decline'
-						{...register('Decline')}
+						{...register('Accept')}
 						name='Accept'
 						type='radio'
 						value='Decline'
@@ -91,7 +103,7 @@ export default function Accept(props) {
 				) : (
 					''
 				)}
-			</div> */}
+			</div>
 			<button className='btn' type='submit'>
 				<span>Submit</span> {<FiMail />}
 			</button>

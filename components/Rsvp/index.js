@@ -8,35 +8,28 @@ export default function RSVP() {
 	const [guestData, setGuestData] = useState([]);
 
 	const getGuestDetails = async (savedGuestDetails) => {
-		setGuestData(savedGuestDetails);
-		console.log(`object`, savedGuestDetails);
-
-		const results = await fetch('/api/guest', {
-			method: 'POST',
-			body: JSON.stringify(savedGuestDetails),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-			.catch((err) => {
-				console.error(err);
-			})
-			.then((res) => res.json());
-		console.log(`results`, results);
-
-		if (results.length === 0) {
-			toast.warning(
-				`Sorry could not find, ${savedGuestDetails.Name} ${savedGuestDetails.Surname} on the list, please try again`
-			);
+		console.log(`initial state "guestData"`, guestData);
+		console.log(`Raw data from`, savedGuestDetails);
+		try {
+			const result = await fetch('/api/guest', {
+				method: 'POST',
+				body: JSON.stringify(savedGuestDetails),
+				headers: {
+					'Application-Type': 'application/json',
+				},
+			});
+			const guest = await result.json();
+			console.log(`response from api`, guest);
+			setGuestData(guest);
+		} catch (error) {
+			console.error(error);
 		}
-		if (results.length > 0) {
-			toast.success(
-				`${savedGuestDetails.Name} ${savedGuestDetails.Surname} you are on the list`
-			);
-		}
-		setGuestData(results);
-		console.log(`guestData`, guestData);
 	};
+
+	useEffect(() => {
+		async function fetchData() {}
+		console.log('from useEffect', guestData);
+	}, [guestData]);
 
 	return (
 		<div>

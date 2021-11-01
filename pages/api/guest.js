@@ -1,44 +1,57 @@
 import { table, getMinifiedRecords } from './utils/Airtable';
+
+function toTitleCase(str) {
+	return str
+		.toLowerCase()
+		.split(' ')
+		.map(function (word) {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		})
+		.join(' ');
+}
+
 export default async function handler(req, res) {
-	switch (req.method) {
-		case 'PUT':
-			try {
-				const guestData = json.parse(req.body);
-				const records = await table('Guests').update(guestData);
-				const updatedRecord = getMinifiedRecords(records);
-				if (!updatedRecord.id) {
-					throw new SyntaxError('guest ID not found');
-				}
-			} catch (error) {
-				console.log(error);
-				res.statusCode = 500;
-				res.json({
-					msg: 'something went wrong',
-				});
-			}
-			break;
-		default:
-			try {
-				const { Name, Surname } = await req.body;
-				console.log(Name, Surname);
-				const records = await table('Guests')
-					.select({
-						filterByFormula: `AND(({Name}='${Name}'),({Surname}='${Surname}'))`,
-					})
-					.firstPage();
-				console.log(records);
-				const minifiedRecords = getMinifiedRecords(records);
-				if (res.statusCode === 200 || res.statusCode === 201) {
-					res.json(minifiedRecords);
-				} else {
-					throw new SyntaxError(
-						'name was not found in Guest database'
-					);
-				}
-			} catch (error) {
-				console.log(error);
-				res.statusCode = 500;
-				res.json({ msg: 'could not find guest' });
-			}
+	if (req.method === 'POST') {
+		try {
+			const { Name: name, Surname: surname } = await JSON.parse(req.body);
+			console.log(`name`, name);
+			console.log(`surname`, surname);
+			console.log(`req.body`, await req.body);
+			const records = await table('Guests')
+				.select({
+					filterByFormula: `OR(
+						(AND({name} = "${name}",{surname} = "${surname}")),
+						(AND({name} = "${toTitleCase(name)}",{surname} = "${toTitleCase(surname)}")),
+						(AND({name} = "${name}",FIND("${surname}",{surname})>0)),
+						(AND({name} = "${name}",FIND(REGEX_REPLACE("${surname}",'[^-]*','' ),{surname})>0))											
+						)`,
+				})
+				.firstPage();
+			const minifiedRecords = getMinifiedRecords(records);
+			res.statusCode = 200;
+			res.json(minifiedRecords);
+		} catch (error) {
+			console.error(error);
+			res.statusCode = 500;
+			res.json({ msg: 'Something went wrong looking for guests' });
+		}
+	}
+	if (req.method === 'PUT') {
+		try {
+			const { id, fields } = req.body;
+			console.log(fields);
+			const updatedRecord = await table('Guests').update(
+				[{ id, fields }],
+				{ typecast: true }
+			);
+			const minifiedRecord = getMinifiedRecords(updatedRecord);
+			res.json(minifiedRecord);
+			res.statusCode = 200;
+		} catch (error) {
+			console.error(error);
+			res.json({
+				msg: 'Something went wrong updating the Airtable to accept or decline',
+			});
+		}
 	}
 }
