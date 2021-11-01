@@ -8,8 +8,8 @@ import Night from './Night';
 
 export default function RSVP() {
 	const [guestData, setGuestData] = useState([]);
-	const [accepted, setAccepted] = useState([])
-	const [declined, setDeclined] = useState([])
+	const [accepted, setAccepted] = useState([]);
+	const [declined, setDeclined] = useState([]);
 
 	const getGuestDetails = async (savedGuestDetails) => {
 		console.log(`initial state "guestData"`, guestData);
@@ -43,8 +43,7 @@ export default function RSVP() {
 	return (
 		<div>
 			<AcceptForm onGetSavedGuestDetails={getGuestDetails} />
-		
-			{guestData.length > 0 ? }
+
 			{guestData.Accept === 'Accept' && <Night name={guestData.Name} />}
 
 			{guestData.Accept === 'Accept' &&
