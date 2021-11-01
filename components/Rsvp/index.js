@@ -1,6 +1,6 @@
 import AcceptForm from '../Forms/AcceptForm';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import DayAndNight from '../DayAndNight';
@@ -8,23 +8,31 @@ import Night from './Night';
 
 export default function RSVP() {
 	const [guestData, setGuestData] = useState([]);
-	const [accepted, setAccepted] = useState([]);
-	const [declined, setDeclined] = useState([]);
+	const [accepted, setAccepted] = useState(null);
+	const [declined, setDeclined] = useState(null);
 
 	const getGuestDetails = async (savedGuestDetails) => {
-		console.log(`initial state "guestData"`, guestData);
-		console.log(`Raw data from`, savedGuestDetails);
+		console.log(
+			`initial state "guestData"`,
+			guestData,
+			`Raw form data`,
+			savedGuestDetails
+		);
+
 		setGuestData(savedGuestDetails);
 		const { Accept } = savedGuestDetails;
+		console.log(Accept);
 
 		/**
 		 * Switch Statement to save accepted and not accepted
 		 */
 		switch (Accept) {
 			case 'Accept':
+				setDeclined(null);
 				setAccepted(savedGuestDetails);
 				break;
 			case 'Decline':
+				setAccepted(null);
 				setDeclined(savedGuestDetails);
 				break;
 			default:
@@ -41,38 +49,73 @@ export default function RSVP() {
 			});
 			const guest = await result.json();
 			console.log(`response from api`, guest);
-			setGuestData((previousState) => {
-				if (guest.length > 0) {
+			if (guest.length > 0 && Accept === 'Accept') {
+				console.log(`Accpeted guest`, guest);
+				setAccepted((previousState) => {
 					return {
 						...previousState,
 						id: guest[0].id,
 						Invitation: guest[0].fields.Invitation,
 					};
-				}
-			});
+				});
+			} else if (guest.length > 0 && Accept === 'Decline') {
+				console.log(`Declined guest`, guest);
+				setDeclined((previousState) => {
+					return {
+						...previousState,
+						id: guest[0].id,
+						Invitation: guest[0].fields.Invitation,
+					};
+				});
+			}
+			// setAccepted((previousState) => {
+			// 	if (guest.length > 0 && guest[0].fields.Accept === 'Accept') {
+			// 		return {
+			// 			...previousState,
+			// 			id: guest[0].id,
+			// 			Invitation: guest[0].fields.Invitation,
+			// 		};
+			// 	}
+			// });
+
+			// setGuestData((previousState) => {
+			// 	if (guest.length > 0) {
+			// 		return {
+			// 			...previousState,
+			// 			id: guest[0].id,
+			// 			Invitation: guest[0].fields.Invitation,
+			// 		};
+			// 	}
+			// });
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	useEffect(() => {
-		async function fetchData() {}
+		async function updateGuest() {}
 		/**
 		 * Console effects of switch statement
 		 */
-		console.log('from useEffect guestData', guestData);
+		// console.log('from useEffect guestData', guestData);
 		console.log('from useEffect accepted', accepted);
 		console.log('from useEffect declined', declined);
-	}, [guestData]);
+	}, [guestData, accepted, declined]);
 
 	return (
-		<div>
-			<AcceptForm onGetSavedGuestDetails={getGuestDetails} />
-
-			{guestData.Accept === 'Accept' && <Night name={guestData.Name} />}
-
-			{guestData.Accept === 'Accept' &&
-				guestData.Invitation === 'DayAndNight' && <DayAndNight />}
-		</div>
+		<>
+			<div>
+				<AcceptForm onGetSavedGuestDetails={getGuestDetails} />
+			</div>
+			<div className=''>
+				{accepted != null && accepted.Invitation === 'DayAndNight' && (
+					<p>Accepted Day</p>
+				)}
+				{declined != null && <p>Declined</p>}
+				{accepted != null && accepted.Invitation === 'Night' && (
+					<p>Accepted Night</p>
+				)}
+			</div>
+		</>
 	);
 }
