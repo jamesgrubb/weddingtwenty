@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 	if (req.method === 'PUT') {
 		try {
 			const { id, fields } = req.body;
-			console.log('from the PUT request ', id);
+			console.log('from the PUT request ', req.body);
 			const updatedRecord = await table('Guests').update(
 				[{ id, fields }],
 				{ typecast: true }

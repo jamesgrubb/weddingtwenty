@@ -25,7 +25,7 @@ export default function Day(props) {
 	const url = '/api/food';
 	const onSubmit = (foodChoice) => {
 		console.log(foodChoice);
-		// props.onGetMenuChoice(foodChoice);
+		props.onGetMenuChoice(foodChoice);
 	};
 
 	const { data, error } = useSWR('/api/food', fetcher);

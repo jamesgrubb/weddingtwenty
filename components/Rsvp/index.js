@@ -12,6 +12,7 @@ export default function RSVP(props) {
 	const [declined, setDeclined] = useState(null);
 	const [updatedGuest, setUpdatedGuest] = useState(null);
 	console.log(`props`, props);
+
 	const getGuestDetails = async (savedGuestDetails) => {
 		console.log(
 			`initial state "guestData"`,
@@ -84,6 +85,26 @@ export default function RSVP(props) {
 		}
 	};
 
+	async function hanldeMenuChoice(savedFoodChoice) {
+		console.log(`guestData from sendFoodChoice functions`, guestData.id);
+		console.log(`foodChoice`, savedFoodChoice);
+		try {
+			const updatedFoodChoice = await fetch('/api/guest', {
+				method: 'PUT',
+				body: JSON.stringify({
+					id: accepted.id,
+					fields: savedFoodChoice,
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			console.log(`returnedFoodChoice`, await updatedFoodChoice.json());
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	useEffect(() => {
 		async function updateGuest() {
 			try {
@@ -105,9 +126,8 @@ export default function RSVP(props) {
 			}
 		}
 
-		if (guestData.id != undefined) {
-			updateGuest();
-		}
+		if (guestData.id === undefined) return;
+		updateGuest();
 
 		/**
 		 * Console effects of switch statement
@@ -125,7 +145,7 @@ export default function RSVP(props) {
 			<div className=''>
 				{accepted != null && accepted.Invitation === 'DayAndNight' && (
 					<>
-						<Day />
+						<Day onGetMenuChoice={hanldeMenuChoice} />
 						<p>Gona party</p>
 					</>
 				)}

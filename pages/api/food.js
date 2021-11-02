@@ -9,7 +9,6 @@ export default async function handler(req, res) {
 			.firstPage();
 		const minifiedRecords = getMinifiedRecords(records);
 		res.statusCode = 200;
-		console.log(minifiedRecords);
 
 		await res.json([...minifiedRecords, ...minifiedDietRecords]);
 	} catch (error) {
