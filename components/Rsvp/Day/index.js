@@ -4,6 +4,7 @@ import { object, string } from 'yup';
 import useSWR from 'swr';
 import { FiMail } from 'react-icons/fi';
 import React from 'react';
+import Title from '../../Svg/Title';
 const validationSchema = object().shape({
 	Starter: string().required(),
 	Main: string().required(),
@@ -53,9 +54,12 @@ export default function Day(props) {
 		<>
 			<div className='z-10 w-full transform translate-x-0'>
 				<h3>
-					{props.name}, we are so glad you can make it. please choose
-					your a starter an a main course for the day.
+					<Title guest={props.guest} />
 				</h3>
+				<p className='w-full max-w-md mx-auto my-3 prose-lg text-center uppercase font-hatton sm:my-6 te'>
+					we are so glad you can make it. please choose your a starter
+					an a main course for the day.
+				</p>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className='z-10 flex-wrap justify-between h-full px-2 py-8 transform translate-x-0 bg-red-100 sm:flex sm:p-8 sm:px-8 sm:py-8'>

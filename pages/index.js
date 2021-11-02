@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-
+import { FiX } from 'react-icons/fi';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 
@@ -48,8 +48,11 @@ export default function Home({ events }) {
 					<DialogContent aria-labelledby='Modal'>
 						<RSVP />
 
-						<button className='btn' onClick={close}>
-							Got it.
+						<button
+							className='absolute inline-flex text-4xl text-teal-600 bg-gray-800 hover:bg-gray-400 top-4 right-4'
+							onClick={close}>
+							<span className='hidden'>close</span>
+							<FiX ariarole='hidden' />
 						</button>
 					</DialogContent>
 				</DialogOverlay>
