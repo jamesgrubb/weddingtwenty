@@ -61,6 +61,10 @@ export default function Home({ events }) {
 }
 
 export async function getStaticProps() {
+	const foodRecords = await table('Menu')
+		.select({ view: 'Grid view' })
+		.firstPage();
+	const foodItems = getMinifiedRecords(foodRecords);
 	const itemRecords = await table('Events')
 		.select({ view: 'Grid view' })
 		.firstPage();
@@ -69,6 +73,7 @@ export async function getStaticProps() {
 	return {
 		props: {
 			events: events,
+			food: foodItems,
 		},
 	};
 }

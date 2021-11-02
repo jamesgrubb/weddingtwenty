@@ -3,14 +3,15 @@ import AcceptForm from '../Forms/AcceptForm';
 import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { toast } from 'react-toastify';
-import DayAndNight from '../DayAndNight';
 import Night from './Night';
+import Day from './Day';
 
-export default function RSVP() {
+export default function RSVP(props) {
 	const [guestData, setGuestData] = useState([]);
 	const [accepted, setAccepted] = useState(null);
 	const [declined, setDeclined] = useState(null);
-
+	const [updatedGuest, setUpdatedGuest] = useState(null);
+	console.log(`props`, props);
 	const getGuestDetails = async (savedGuestDetails) => {
 		console.log(
 			`initial state "guestData"`,
@@ -68,15 +69,6 @@ export default function RSVP() {
 					};
 				});
 			}
-			// setAccepted((previousState) => {
-			// 	if (guest.length > 0 && guest[0].fields.Accept === 'Accept') {
-			// 		return {
-			// 			...previousState,
-			// 			id: guest[0].id,
-			// 			Invitation: guest[0].fields.Invitation,
-			// 		};
-			// 	}
-			// });
 
 			setGuestData((previousState) => {
 				if (guest.length > 0) {
@@ -132,10 +124,17 @@ export default function RSVP() {
 			</div>
 			<div className=''>
 				{accepted != null && accepted.Invitation === 'DayAndNight' && (
-					<p>Accepted Day</p>
+					<>
+						<Day />
+						<p>Gona party</p>
+					</>
 				)}
 				{accepted != null && accepted.Invitation === 'Night' && (
-					<p>Accepted Night</p>
+					<>
+						<Night name='Name' />
+
+						<p>Accepted Night</p>
+					</>
 				)}
 				{declined != null && <p>Declined</p>}
 			</div>

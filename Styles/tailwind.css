@@ -64,6 +64,9 @@ input::placeholder {
 	.btn {
 		@apply text-xs sm:text-base active:scale-105 space-x-2 outline-none focus:ring-2 focus:ring-teal-600 inline-flex items-center px-3 pt-2 min-h-[44px] pb-2 text-teal-100 text-center bg-gray-700 shadow font-mono font-light hover:bg-gray-400;
 	}
+	.btn.secondary {
+		@apply text-teal-900 bg-opacity-20 ring-inset ring-2 ring-gray-800;
+	}
 	.btn.form {
 		@apply mt-3;
 	}
