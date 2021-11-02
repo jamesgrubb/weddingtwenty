@@ -1,17 +1,27 @@
 import AcceptForm from '../Forms/AcceptForm';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
 import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import Night from './Night';
 import Day from './Day';
 
 export default function RSVP(props) {
+	const [isShowing, setIsShowing] = useState(true);
 	const [guestData, setGuestData] = useState([]);
 	const [accepted, setAccepted] = useState(null);
 	const [declined, setDeclined] = useState(null);
 	const [updatedGuest, setUpdatedGuest] = useState(null);
 	console.log(`props`, props);
+
+	const formRef = useRef();
+
+	useEffect(() => {
+		const form = formRef.current;
+		const tl = gsap.timeline();
+		!isShowing && tl.to(form, { y: -100, opacity: 0, display: 'none' });
+	}, [isShowing]);
 
 	const getGuestDetails = async (savedGuestDetails) => {
 		console.log(
@@ -20,7 +30,7 @@ export default function RSVP(props) {
 			`Raw form data`,
 			savedGuestDetails
 		);
-
+		setIsShowing(false);
 		setGuestData(savedGuestDetails);
 		const { Accept } = savedGuestDetails;
 		console.log(Accept);
@@ -139,7 +149,7 @@ export default function RSVP(props) {
 
 	return (
 		<>
-			<div>
+			<div ref={formRef}>
 				<AcceptForm onGetSavedGuestDetails={getGuestDetails} />
 			</div>
 			<div className=''>
