@@ -73,7 +73,7 @@ input::placeholder {
 }
 
 [data-reach-dialog-content] {
-	@apply w-full sm:w-3/4 rounded z-30 translate-x-0 transform drop-shadow shadow !important;
+	@apply w-full sm:w-3/4 relative rounded z-30 translate-x-0 transform drop-shadow shadow !important;
 }
 [data-reach-dialog-overlay] {
 	@apply z-20 !important;

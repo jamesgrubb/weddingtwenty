@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from 'yup';
 import useSWR from 'swr';
 import { FiMail } from 'react-icons/fi';
-
+import React from 'react';
 const validationSchema = object().shape({
 	Starter: string().required(),
 	Main: string().required(),

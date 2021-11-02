@@ -48,7 +48,9 @@ export default function Home({ events }) {
 					<DialogContent aria-labelledby='Modal'>
 						<RSVP />
 
-						<button onClick={close}>Got it.</button>
+						<button className='btn' onClick={close}>
+							Got it.
+						</button>
 					</DialogContent>
 				</DialogOverlay>
 			)}
