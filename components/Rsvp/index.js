@@ -33,7 +33,7 @@ export default function RSVP(props) {
 			`Raw form data`,
 			savedGuestDetails
 		);
-		setIsShowing(false);
+
 		setGuestData(savedGuestDetails);
 		const { Accept } = savedGuestDetails;
 		console.log(Accept);
@@ -66,6 +66,7 @@ export default function RSVP(props) {
 			console.log(`response from api`, guest);
 			if (guest.length > 0 && Accept === 'Accept') {
 				console.log(`Accpeted guest`, guest);
+				setIsShowing(false);
 				setAccepted((previousState) => {
 					return {
 						...previousState,
@@ -74,6 +75,7 @@ export default function RSVP(props) {
 					};
 				});
 			} else if (guest.length > 0 && Accept === 'Decline') {
+				setIsShowing(false);
 				console.log(`Declined guest`, guest);
 				setDeclined((previousState) => {
 					return {
