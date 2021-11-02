@@ -8,7 +8,7 @@ import Nav from '../Nav';
 import { FiAlignCenter } from 'react-icons/fi';
 
 const DefaultLayout = ({ children }) => {
-	const [toggleNav, setToggleNav] = useState(false);
+	const [toggleNav, setToggleNav] = useState(true);
 
 	const navRef = useRef();
 	useEffect(() => {

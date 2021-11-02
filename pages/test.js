@@ -4,7 +4,7 @@ function test() {
 	return (
 		<div>
 			<form action=''>
-				<div class='bg-red-500 w-screen'>
+				<div className='w-screen bg-red-500'>
 					<input
 						type='text'
 						name=''

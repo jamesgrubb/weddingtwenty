@@ -57,8 +57,8 @@ export default function Day(props) {
 					<Title guest={props.guest} />
 				</h3>
 				<p className='w-full max-w-md mx-auto my-3 prose-lg text-center uppercase font-hatton sm:my-6 te'>
-					we are so glad you can make it. please choose your a starter
-					an a main course for the day.
+					We are so glad you can make it. Please choose a starter and
+					main course.
 				</p>
 				<form
 					onSubmit={handleSubmit(onSubmit)}

@@ -1,4 +1,4 @@
-import { table, getMinifiedRecords } from './utils/Airtable';
+import { table, getMinifiedRecords, strip } from './utils/Airtable';
 
 function toTitleCase(str) {
 	return str
@@ -19,12 +19,18 @@ export default async function handler(req, res) {
 			console.log(`req.body`, await req.body);
 			const records = await table('Guests')
 				.select({
-					filterByFormula: `OR(
-						(AND({name} = "${name}",{surname} = "${surname}")),
-						(AND({name} = "${toTitleCase(name)}",{surname} = "${toTitleCase(surname)}")),
-						(AND({name} = "${name}",FIND("${surname}",{surname})>0)),
-						(AND({name} = "${name}",FIND(REGEX_REPLACE("${surname}",'[^-]*','' ),{surname})>0))											
-						)`,
+					filterByFormula: `
+					AND(({name}='${strip(name)}'),({surname}='${strip(surname)}'))						
+						`,
+					/**
+					 * Not sure this logic is helping
+					 */
+					// OR(
+					// (AND({name} = "${name}",{surname} = "${surname}")),
+					// (AND({name} = "${toTitleCase(name)}",{surname} = "${toTitleCase(surname)}")),
+					// (AND({name} = "${name}",FIND("${surname}",{surname})>0)),
+					// (AND({name} = "${name}",FIND(REGEX_REPLACE("${surname}",'[^-]*','' ),{surname})>0))
+					// )
 				})
 				.firstPage();
 			const minifiedRecords = getMinifiedRecords(records);

@@ -17,4 +17,9 @@ const minifyRecord = (record) => {
 	};
 };
 
-export { table, getMinifiedRecords, minifyRecord };
+const strip = (string) => {
+	let cleaned = string.toLowerCase();
+	return cleaned.trim();
+};
+
+export { table, getMinifiedRecords, minifyRecord, strip };

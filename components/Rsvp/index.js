@@ -6,13 +6,15 @@ import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import Night from './Night';
 import Day from './Day';
-
+import Declined from './Declined';
+import ThankYou from './ThankyouForYourMenuChoice';
 export default function RSVP(props) {
 	const [isShowing, setIsShowing] = useState(true);
 	const [menuIsShowing, setMenuIsSHowing] = useState(true);
 	const [guestData, setGuestData] = useState([]);
 	const [accepted, setAccepted] = useState(null);
 	const [declined, setDeclined] = useState(null);
+
 	const [updatedGuest, setUpdatedGuest] = useState(null);
 	console.log(`props`, props);
 
@@ -110,6 +112,7 @@ export default function RSVP(props) {
 					'Content-Type': 'application/json',
 				},
 			});
+			setMenuIsSHowing(false);
 			console.log(`returnedFoodChoice`, await updatedFoodChoice.json());
 		} catch (error) {
 			console.error(error);
@@ -131,13 +134,16 @@ export default function RSVP(props) {
 						'Content-Type': 'application/json',
 					},
 				});
+
 				console.log(await accept.json());
 			} catch (error) {
 				console.error(error);
 			}
 		}
 
-		if (guestData.id === undefined) return;
+		if (!guestData || !guestData.id || guestData.id === '') {
+			return;
+		}
 		updateGuest();
 
 		/**
@@ -156,20 +162,21 @@ export default function RSVP(props) {
 			<div className=''>
 				{accepted != null && accepted.Invitation === 'DayAndNight' && (
 					<>
-						<Day
-							guest={accepted.Name}
-							onGetMenuChoice={hanldeMenuChoice}
-						/>
+						{menuIsShowing && (
+							<Day
+								guest={accepted.Name}
+								onGetMenuChoice={hanldeMenuChoice}
+							/>
+						)}
 					</>
 				)}
 				{accepted != null && accepted.Invitation === 'Night' && (
 					<>
-						<Night name='Name' />
-
-						<p>Accepted Night</p>
+						<Night guest={accepted.Name} />
 					</>
 				)}
-				{declined != null && <p>Declined</p>}
+				{declined != null && <Declined guest={declined.Name} />}
+				{!menuIsShowing && <ThankYou />}
 			</div>
 		</>
 	);

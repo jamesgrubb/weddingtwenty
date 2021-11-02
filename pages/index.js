@@ -30,13 +30,7 @@ export default function Home({ events }) {
 
 			<Hero />
 
-			<Section id='welcome' title='Welcome'>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Magnam modi cupiditate quas accusamus, incidunt corporis
-					voluptates id tempore ut nobis.
-				</p>
-			</Section>
+			<Section id='welcome' title='Welcome'></Section>
 			<Section id='the-c-word' title='Covid'>
 				<CWord />
 			</Section>
