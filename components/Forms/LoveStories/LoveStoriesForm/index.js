@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { FiMail } from 'react-icons/fi';
+import Rsvp from '../../../Svg/rsvp';
 function LoveStoriesForm(props) {
 	const {
 		register,
@@ -17,8 +18,11 @@ function LoveStoriesForm(props) {
 
 	return (
 		<form
-			className='z-10 flex-col items-center justify-start block h-full px-1 py-8 space-y-8 font-mono transform translate-x-0 bg-red-100 sm:flex sm:p-8 sm:items-start sm:px-8 sm:py-8'
+			className='z-10 flex-col items-center justify-start block h-full px-1 py-8 space-y-8 overflow-y-hidden font-mono transform translate-x-0 bg-red-100 sm:flex sm:p-8 sm:items-start sm:px-8 sm:py-8'
 			onSubmit={handleSubmit(onSubmit)}>
+			<div className='absolute top-0 z-auto overflow-hidden right-6 '>
+				<Rsvp />
+			</div>
 			<div className='relative flex flex-col items-center w-full'>
 				<input
 					id='email'
@@ -49,7 +53,7 @@ function LoveStoriesForm(props) {
 					''
 				)}
 			</div>
-			<button className='btn' type='submit'>
+			<button className='z-10 btn' type='submit'>
 				<span>send my story</span> {<FiMail />}
 			</button>
 		</form>

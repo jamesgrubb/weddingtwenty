@@ -18,9 +18,9 @@ const DefaultLayout = ({ children }) => {
 		// toggleNav ? tl.to(nav, { y: 200 }) : tl.to(nav, { y: -200 });
 	}, [toggleNav]);
 	return (
-		<div className='flex flex-col items-center flex-nowrap'>
+		<div className='flex flex-col items-center h-full flex-nowrap'>
 			<div className='fixed left-0 right-0 z-10 w-full bg-teal-50'>
-				<header className='z-10 flex items-center justify-between w-full h-16 px-4 transform translate-x-0 md:h-20 md:px-0 md:container'>
+				<header className='relative flex items-center justify-between w-full h-16 px-4 transform translate-x-0 md:h-20 md:px-0 md:container'>
 					<div className='z-10 '>
 						<div className='flex w-24 sm:w-36 md:hidden'>
 							<svg

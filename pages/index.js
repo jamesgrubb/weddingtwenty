@@ -59,8 +59,8 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 					<p className='font-mono italic font-bold text-teal-900'>
 						Please email us by {cutOffDate()} (in{' '}
 						{cutOffCountdown()} days) at{' '}
-						<a href={live.email}>{live.email}</a> and we will send
-						you a private Zoom link.
+						<a href={`mailTo:${live.email}`}>{live.email}</a> and we
+						will send you a private Zoom link.
 					</p>
 				) : (
 					''
@@ -69,7 +69,7 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 			<Section id='the-c-word' title='Covid'>
 				<ReactMarkdown>{cWord}</ReactMarkdown>
 			</Section>
-			<Section id='gifts' title='Gifts'>
+			{/* <Section id='gifts' title='Gifts'>
 				<ReactMarkdown>{gifts.copy}</ReactMarkdown>
 				<p className='px-0 font-mono italic text-teal-900 address'>
 					The link to our wedding gift fund page is
@@ -77,7 +77,7 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 				<ReactMarkdown className='px-0 font-mono italic text-teal-900 address'>
 					{gifts.url}
 				</ReactMarkdown>
-			</Section>
+			</Section> */}
 			{showDialog && (
 				<DialogOverlay onDismiss={close}>
 					<DialogContent aria-labelledby='Modal'>

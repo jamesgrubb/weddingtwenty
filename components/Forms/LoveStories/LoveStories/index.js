@@ -40,7 +40,7 @@ function LoveStories() {
 		<>
 			<Sketch x={50} y={50} background={colorTeal} />
 			<div className='z-10 flex-wrap items-stretch block w-full transform translate-x-0 bg-teal-800 border-b-2 border-teal-900 sm:flex'>
-				<div className='relative flex flex-col items-center p-2 leading-relaxed bg-teal-400 sm:p-8 bg-opacity-80 font-lora lg:w-1/2'>
+				<div className='relative flex flex-col items-center p-2 leading-relaxed bg-teal-400 text-teal-50 sm:p-8 bg-opacity-80 font-lora lg:w-1/2'>
 					<CloudinaryContext
 						className='mt-6 transform border-teal-300 rounded-full border-6'
 						cloudName='makingthings'>
@@ -65,10 +65,13 @@ function LoveStories() {
 						James and Tina would love to hear what you have to say.
 						Thank you, thank you, thank you for your thoughts, time
 						and help. I look forward to reading them to you on the
-						28th December. Janey x
+						28th December. Janey x{' '}
+					</p>
+					<p class='font-mono ml-auto italic text-sm text-right'>
+						Please wise words as soon as you can.
 					</p>
 				</div>
-				<div className='w-full bg-teal-200 lg:w-1/2 '>
+				<div className='relative w-full bg-teal-200 lg:w-1/2'>
 					<LoveStoriesForm onGetLoveStory={saveLoveStoryHandler} />
 				</div>
 			</div>

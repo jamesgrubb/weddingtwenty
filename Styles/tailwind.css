@@ -4,7 +4,8 @@
 
 @layer base {
 	body,
-	html {
+	html,
+	#__next {
 		height: 100%;
 	}
 

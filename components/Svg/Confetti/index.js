@@ -2,6 +2,7 @@ import React from 'react';
 const Icon = React.forwardRef((props, ref) => {
 	return (
 		<svg
+			className='absolute z-20 pointer-events-none'
 			ref={ref}
 			xmlns='http://www.w3.org/2000/svg'
 			width='100%'

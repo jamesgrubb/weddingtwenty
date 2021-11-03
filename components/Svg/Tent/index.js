@@ -3,10 +3,11 @@ import React from 'react';
 const Icon = React.forwardRef((props, ref) => {
 	return (
 		<svg
+			className='bg-red-300'
 			ref={ref}
 			xmlns='http://www.w3.org/2000/svg'
-			width='253'
-			height='424'
+			width='100%'
+			height='100%'
 			fill='none'
 			viewBox='0 0 253 424'>
 			<path
