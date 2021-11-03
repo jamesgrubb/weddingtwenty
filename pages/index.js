@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { FiX } from 'react-icons/fi';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
-
+import ReactMarkdown from 'react-markdown';
 import DayAndNight from '../components/DayAndNight';
 import Gifting from '../components/Gifting';
 import CWord from '../components/CWord';
@@ -35,8 +35,7 @@ export default function Home({ events, gifts }) {
 				<CWord />
 			</Section>
 			<Section id='gifts' title='Gifts'>
-				{gifts}
-				<Gifting />
+				<ReactMarkdown>{gifts}</ReactMarkdown>
 			</Section>
 			{showDialog && (
 				<DialogOverlay onDismiss={close}>
@@ -61,16 +60,28 @@ export default function Home({ events, gifts }) {
 }
 
 export async function getStaticProps() {
-	const contentRecords = await table('Content')
+	const allContentRecords = await table('Content').select({}).firstPage();
+	const minifiedContent = getMinifiedRecords(allContentRecords);
+
+	const groupBy = (key) => (result, current) => {
+		const item = Object.assign({}, current);
+		if (typeof result[current[key]] == 'undefined') {
+			result[current[key]] = [item];
+		} else {
+			result[current[key]].push(item);
+		}
+		return result;
+	};
+
+	const content = minifiedContent.reduce(groupBy('fields.Title'), {});
+	console.log(`content`, content);
+
+	const giftRecords = await table('Content')
 		.select({ filterByFormula: `{Title}="Gifts"` })
 		.firstPage();
-	const allContent = getMinifiedRecords(contentRecords);
+	const gifts = getMinifiedRecords(giftRecords);
 	// const {Welcome,Venue,Gifts,LiveFeed}
-	const edited = (string) => {
-		string.replace(/\n/g, '<br />');
-		return string;
-	};
-	console.log(`allContent`, edited(allContent[0].fields.Copy));
+
 	const foodRecords = await table('Menu')
 		.select({ view: 'Grid view' })
 		.firstPage();
@@ -84,7 +95,7 @@ export async function getStaticProps() {
 		props: {
 			events: events,
 			food: foodItems,
-			gifts: allContent[0].fields.Copy,
+			gifts: gifts[0].fields.Copy,
 		},
 	};
 }
