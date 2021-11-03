@@ -8,7 +8,7 @@ const DayAndNight = ({ events }) => {
 							return (
 								<li
 									key={event.id}
-									className='flex items-center justify-between w-full py-4 hover:bg-teal-200'>
+									className='flex items-center justify-between w-full'>
 									<div className='flex-1'>
 										<div className='relative flex items-center justify-between w-full font-mono after:w-full after:border-b after:mx-1 after:border-gray-500'>
 											<em className='inline-flex py-2 not-italic'>
