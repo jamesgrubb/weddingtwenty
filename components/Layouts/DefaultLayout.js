@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import Brand from '../Svg/Brand';
 import Nav from '../Nav';
+import Cta from '../Rsvp/CallToAction';
 import { FiAlignCenter } from 'react-icons/fi';
 
 const DefaultLayout = ({ children }) => {
@@ -17,7 +18,7 @@ const DefaultLayout = ({ children }) => {
 		// toggleNav ? tl.to(nav, { y: 200 }) : tl.to(nav, { y: -200 });
 	}, [toggleNav]);
 	return (
-		<div className='flex flex-col items-center h-full min-h-screen bg-teal-300 flex-nowrap'>
+		<div className='flex flex-col items-center flex-nowrap'>
 			<div className='fixed left-0 right-0 z-10 w-full bg-teal-50'>
 				<header className='z-10 flex items-center justify-between w-full h-16 px-4 transform translate-x-0 md:h-20 md:px-0 md:container'>
 					<div className='z-10 '>
@@ -480,7 +481,7 @@ const DefaultLayout = ({ children }) => {
 				</header>
 			</div>
 
-			<main className='w-full min-h-full pb-64 mt-16 md:mt-20 '>
+			<main className='w-full pb-24 bg-teal-300'>
 				{children}
 				<ToastContainer />
 			</main>

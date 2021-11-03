@@ -19,7 +19,7 @@ class WeddingDocument extends Document {
 						rel='stylesheet'
 					/>{' '}
 				</Head>
-				<body className='text-gray-600 bg-teal-300'>
+				<body className='text-gray-60'>
 					<Main />
 					<NextScript />
 				</body>
