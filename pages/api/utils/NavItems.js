@@ -12,6 +12,10 @@ const NavItems = [
 		link: '/#day-and-night',
 	},
 	{
+		item: 'Live',
+		link: '/live',
+	},
+	{
 		item: 'The C Word',
 		link: '/#the-c-word',
 	},
@@ -20,12 +24,8 @@ const NavItems = [
 		link: '/#gifts',
 	},
 	{
-		item: 'Live',
-		link: '/live',
-	},
-	{
-		item: 'Love Stories',
-		link: '/love-stories',
+		item: 'Wise Words',
+		link: '/wise-words',
 	},
 ];
 

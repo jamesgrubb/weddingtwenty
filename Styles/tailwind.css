@@ -36,6 +36,7 @@
 		font-family: 'Hatton';
 	}
 }
+
 input::placeholder {
 	display: none !important;
 }
@@ -70,6 +71,10 @@ input::placeholder {
 	.btn.form {
 		@apply mt-3;
 	}
+}
+
+p {
+	@apply py-2 text-sm leading-relaxed sm:text-base;
 }
 
 [data-reach-dialog-content] {

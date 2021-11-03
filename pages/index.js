@@ -14,7 +14,7 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import RSVP from '../components/Rsvp';
 import Cta from '../components/Rsvp/CallToAction';
-export default function Home({ events, gifts }) {
+export default function Home({ events, welcome, gifts, cWord, live }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 	console.log(showDialog);
 	const open = () => setShowDialog(true);
@@ -30,9 +30,17 @@ export default function Home({ events, gifts }) {
 
 			<Hero />
 
-			<Section id='welcome' title='Welcome'></Section>
+			<Section id='welcome' title='Welcome'>
+				<ReactMarkdown>{welcome}</ReactMarkdown>
+			</Section>
+			<Section id='day-and-night' title='Day and night'>
+				<DayAndNight events={events} />
+			</Section>
+			<Section id='day-and-night' title='Live feed'>
+				<ReactMarkdown>{live}</ReactMarkdown>
+			</Section>
 			<Section id='the-c-word' title='Covid'>
-				<CWord />
+				<ReactMarkdown>{cWord}</ReactMarkdown>
 			</Section>
 			<Section id='gifts' title='Gifts'>
 				<ReactMarkdown>{gifts}</ReactMarkdown>
@@ -51,10 +59,6 @@ export default function Home({ events, gifts }) {
 					</DialogContent>
 				</DialogOverlay>
 			)}
-
-			<Section id='day-and-night' title='Day and night'>
-				<DayAndNight events={events} />
-			</Section>
 		</>
 	);
 }
@@ -62,20 +66,12 @@ export default function Home({ events, gifts }) {
 export async function getStaticProps() {
 	const allContentRecords = await table('Content').select({}).firstPage();
 	const minifiedContent = getMinifiedRecords(allContentRecords);
-
-	const groupBy = (key) => (result, current) => {
-		const item = Object.assign({}, current);
-		if (typeof result[current[key]] == 'undefined') {
-			result[current[key]] = [item];
-		} else {
-			result[current[key]].push(item);
-		}
-		return result;
-	};
-
-	const content = minifiedContent.reduce(groupBy('fields.Title'), {});
+	const content = minifiedContent.reduce(
+		(obj, item) =>
+			Object.assign(obj, { [item.fields.Title]: item.fields.Copy }),
+		{}
+	);
 	console.log(`content`, content);
-
 	const giftRecords = await table('Content')
 		.select({ filterByFormula: `{Title}="Gifts"` })
 		.firstPage();
@@ -93,9 +89,14 @@ export async function getStaticProps() {
 
 	return {
 		props: {
+			gifts: content.gifts,
+			live: content.liveFeed,
+			cWord: content.cWord,
+			welcome: content.welcome,
 			events: events,
 			food: foodItems,
-			gifts: gifts[0].fields.Copy,
+			gifts: content.gifts,
+			liveFeed: content.liveFeed,
 		},
 	};
 }
