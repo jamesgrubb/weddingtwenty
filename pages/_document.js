@@ -22,7 +22,6 @@ class WeddingDocument extends Document {
 				<body className='text-gray-600 bg-teal-300'>
 					<Main />
 					<NextScript />
-					<div id='modal-root'></div>
 				</body>
 			</Html>
 		);
