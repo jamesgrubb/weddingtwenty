@@ -72,8 +72,11 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 			<Section id='gifts' title='Gifts'>
 				<ReactMarkdown>{gifts.copy}</ReactMarkdown>
 				<p className='px-0 font-mono italic text-teal-900 address'>
-					If you fancy a bit of cash{gifts.url}
+					The link to our wedding gift fund page is
 				</p>
+				<ReactMarkdown className='px-0 font-mono italic text-teal-900 address'>
+					{gifts.url}
+				</ReactMarkdown>
 			</Section>
 			{showDialog && (
 				<DialogOverlay onDismiss={close}>
