@@ -68,7 +68,7 @@ function LoveStories() {
 						28th December. Janey x{' '}
 					</p>
 					<p class='font-mono ml-auto italic text-sm text-right'>
-						Please wise words as soon as you can.
+						Please send your wise words as soon as you can.
 					</p>
 				</div>
 				<div className='relative w-full bg-teal-200 lg:w-1/2'>

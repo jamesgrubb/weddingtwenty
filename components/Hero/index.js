@@ -38,53 +38,10 @@ const Hero = () => {
 
 		targets.forEach((obj, i) => {
 			const tl = gsap.timeline({ repeat: -1, delay: i * 0.4 });
-			tl.set(obj, { 'stroke-width': 2 });
+			tl.set(obj, { 'stroke-width': 4, 'stroke-linecap': 'round' });
 			tl.from(obj, { duration: 3, drawSVG: '0% 0%' });
 			tl.to(obj, { duration: 1, drawSVG: '100% 100%' }, 2);
 		});
-
-		// smokeTl.set(tentAndSmokeRef.current.children, {
-		// 	opacity: gsap.utils.wrap([1, 0.5, 1, 0.8, 0.2]),
-		// 	opacity: 1,
-		// 	stroke: gsap.utils.wrap(['white']),
-		// 	'stroke-width': gsap.utils.wrap([1, 4, 2, 6, 4]),
-		// });
-		// smokeTl.fromTo(
-		// 	tentAndSmokeRef.current.children,
-		// 	{ drawSVG: '-10% 0%', y: 0 },
-		// 	{
-		// 		drawSVG: '110% 110%',
-		// 		stroke: gsap.utils.wrap([
-		// 			'red',
-		// 			'white',
-		// 			'violet',
-		// 			'cornflowerblue',
-		// 			'white',
-		// 		]),
-		// 		repeat: -1,
-		// 		ease: 'power1.inOut',
-		// 	}
-		// );
-		// smokeTl.fromTo(
-		// 	tentAndSmokeRef.current.children,
-		// 	{ drawSVG: '100%', y: 0 },
-		// 	{
-		// 		drawSVG: '120% 140%',
-		// 		repeat: -1,
-		// 		stroke: 'white',
-		// 		ease: 'power1.inOut',
-		// 	}
-		// );
-		// smokeTl.fromTo(
-		// 	tentAndSmokeRef.current.children,
-		// 	{ drawSVG: '120% 140%', y: 0 },
-		// 	{
-		// 		drawSVG: '200% 200%',
-
-		// 		stroke: 'white',
-		// 		ease: 'power1.inOut',
-		// 	}
-		// );
 
 		tl.to(confettiRef.current.children, {
 			opacity: 0.9,
@@ -107,7 +64,7 @@ const Hero = () => {
 					<div className='inline-flex'>r</div>ate
 				</h2>
 
-				<figure className=' md:absolute md:right-0'>
+				<figure className=' md:absolute md:right-1/2'>
 					<TentAndSmoke ref={tentAndSmokeRef} />
 				</figure>
 				<Confetti ref={confettiRef} />
