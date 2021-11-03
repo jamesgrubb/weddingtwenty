@@ -2,7 +2,7 @@ const Section = (props) => {
 	return (
 		<div
 			id={props.id}
-			className='flex items-center min-h-[70vh] justify-center w-full bg-teal-300'>
+			className='flex items-center min-h-[70vh] justify-center w-full'>
 			<div className='container h-full px-4 sm:px-0 py-38'>
 				<h2 className='text-3xl prose-2xl text-gray-600 uppercase sm:text-6xl'>
 					{props.title}

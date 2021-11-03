@@ -19,7 +19,12 @@ class WeddingDocument extends Document {
 						rel='stylesheet'
 					/>{' '}
 				</Head>
-				<body>
+				<body
+					className='bg-teal-300'
+					style={{
+						backgroundImage:
+							'url(https://res.cloudinary.com/makingthings/image/upload/o_50,c_scale,f_auto,q_56,w_600/v1635923936/wedding/Snow_White.png)',
+					}}>
 					<Main />
 					<NextScript />
 					<div id='modal-root'></div>

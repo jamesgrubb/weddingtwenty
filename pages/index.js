@@ -14,7 +14,7 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import RSVP from '../components/Rsvp';
 import Cta from '../components/Rsvp/CallToAction';
-export default function Home({ events }) {
+export default function Home({ events, gifts }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 	console.log(showDialog);
 	const open = () => setShowDialog(true);
@@ -35,6 +35,7 @@ export default function Home({ events }) {
 				<CWord />
 			</Section>
 			<Section id='gifts' title='Gifts'>
+				{gifts}
 				<Gifting />
 			</Section>
 			{showDialog && (
@@ -60,6 +61,16 @@ export default function Home({ events }) {
 }
 
 export async function getStaticProps() {
+	const contentRecords = await table('Content')
+		.select({ filterByFormula: `{Title}="Gifts"` })
+		.firstPage();
+	const allContent = getMinifiedRecords(contentRecords);
+	// const {Welcome,Venue,Gifts,LiveFeed}
+	const edited = (string) => {
+		string.replace(/\n/g, '<br />');
+		return string;
+	};
+	console.log(`allContent`, edited(allContent[0].fields.Copy));
 	const foodRecords = await table('Menu')
 		.select({ view: 'Grid view' })
 		.firstPage();
@@ -73,6 +84,7 @@ export async function getStaticProps() {
 		props: {
 			events: events,
 			food: foodItems,
+			gifts: allContent[0].fields.Copy,
 		},
 	};
 }
