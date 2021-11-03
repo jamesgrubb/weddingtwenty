@@ -480,7 +480,7 @@ const DefaultLayout = ({ children }) => {
 				</header>
 			</div>
 
-			<main className='w-full min-h-full mt-16 bg-teal-300 md:mt-20 '>
+			<main className='w-full min-h-full pb-64 mt-16 md:mt-20 '>
 				{children}
 				<ToastContainer />
 			</main>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { cutOffDate, cutOffCountdown } from './api/utils/Meta';
 import { FiX } from 'react-icons/fi';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
@@ -14,7 +15,8 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import RSVP from '../components/Rsvp';
 import Cta from '../components/Rsvp/CallToAction';
-export default function Home({ events, welcome, gifts, cWord, live }) {
+import Venue from '../components/Venue';
+export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 	const [showDialog, setShowDialog] = React.useState(false);
 	console.log(showDialog);
 	const open = () => setShowDialog(true);
@@ -33,17 +35,45 @@ export default function Home({ events, welcome, gifts, cWord, live }) {
 			<Section id='welcome' title='Welcome'>
 				<ReactMarkdown>{welcome}</ReactMarkdown>
 			</Section>
+			<Section id='venue' title='Venue'>
+				<ReactMarkdown className='px-0 font-mono italic text-teal-900 address'>
+					{venue.address}
+				</ReactMarkdown>
+				<ReactMarkdown className='px-0 font-mono italic address'>
+					{venue.url}
+				</ReactMarkdown>
+				<ReactMarkdown className='px-0 font-mono italic address'>
+					{venue.email}
+				</ReactMarkdown>
+				<p className='px-0 font-mono italic text-teal-900 address'>
+					{venue.phone}
+				</p>
+				<ReactMarkdown>{venue.copy}</ReactMarkdown>
+			</Section>
 			<Section id='day-and-night' title='Day and night'>
 				<DayAndNight events={events} />
 			</Section>
-			<Section id='day-and-night' title='Live feed'>
-				<ReactMarkdown>{live}</ReactMarkdown>
+			<Section id='live' title='Live feed'>
+				<ReactMarkdown>{live.copy}</ReactMarkdown>
+				{live.email ? (
+					<p className='font-mono italic font-bold text-teal-900'>
+						Please email us by {cutOffDate()} (in{' '}
+						{cutOffCountdown()} days) at{' '}
+						<a href={live.email}>{live.email}</a> and we will send
+						you a private Zoom link.
+					</p>
+				) : (
+					''
+				)}
 			</Section>
 			<Section id='the-c-word' title='Covid'>
 				<ReactMarkdown>{cWord}</ReactMarkdown>
 			</Section>
 			<Section id='gifts' title='Gifts'>
-				<ReactMarkdown>{gifts}</ReactMarkdown>
+				<ReactMarkdown>{gifts.copy}</ReactMarkdown>
+				<p className='px-0 font-mono italic text-teal-900 address'>
+					If you fancy a bit of cash{gifts.url}
+				</p>
 			</Section>
 			{showDialog && (
 				<DialogOverlay onDismiss={close}>
@@ -68,7 +98,20 @@ export async function getStaticProps() {
 	const minifiedContent = getMinifiedRecords(allContentRecords);
 	const content = minifiedContent.reduce(
 		(obj, item) =>
-			Object.assign(obj, { [item.fields.Title]: item.fields.Copy }),
+			Object.assign(obj, {
+				[item.fields.Title]: {
+					copy: item.fields.Copy,
+					url: item.fields.Url != undefined ? item.fields.Url : '',
+					email:
+						item.fields.Email != undefined ? item.fields.Email : '',
+					address:
+						item.fields.Address != undefined
+							? item.fields.Address
+							: '',
+					phone:
+						item.fields.Phone != undefined ? item.fields.Phone : '',
+				},
+			}),
 		{}
 	);
 	console.log(`content`, content);
@@ -89,14 +132,14 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			gifts: content.gifts,
+			venue: content.venue,
 			live: content.liveFeed,
-			cWord: content.cWord,
-			welcome: content.welcome,
+			cWord: content.cWord.copy,
+			welcome: content.welcome.copy,
 			events: events,
 			food: foodItems,
 			gifts: content.gifts,
-			liveFeed: content.liveFeed,
+			liveFeed: content.liveFeed.copy,
 		},
 	};
 }

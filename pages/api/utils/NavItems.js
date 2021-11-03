@@ -8,12 +8,16 @@ const NavItems = [
 		link: '/#welcome',
 	},
 	{
+		item: 'Venue',
+		link: '/#venue',
+	},
+	{
 		item: 'Day and Night',
 		link: '/#day-and-night',
 	},
 	{
 		item: 'Live',
-		link: '/live',
+		link: '/#live',
 	},
 	{
 		item: 'The C Word',

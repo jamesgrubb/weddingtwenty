@@ -76,6 +76,9 @@ input::placeholder {
 p {
 	@apply py-2 text-sm leading-relaxed sm:text-base;
 }
+.address p {
+	@apply py-0;
+}
 
 [data-reach-dialog-content] {
 	@apply w-full sm:w-3/4 relative rounded z-30 translate-x-0 transform drop-shadow shadow !important;
