@@ -18,11 +18,12 @@ function LoveStoriesForm(props) {
 
 	return (
 		<form
-			className='z-10 flex-col items-center justify-start block h-full px-1 py-8 space-y-8 overflow-y-hidden font-mono transform translate-x-0 bg-red-100 sm:flex sm:p-8 sm:items-start sm:px-8 sm:py-8'
+			style={{
+				backgroundImage:
+					'url(https://res.cloudinary.com/makingthings/image/authenticated/s--foX__YiE--/v1635984948/wedding/RSVP.svg)',
+			}}
+			className='z-10 flex-col items-center justify-start block h-full px-1 py-8 space-y-8 overflow-y-hidden font-mono transform translate-x-0 bg-red-100 bg-center sm:flex sm:p-8 sm:items-start sm:px-8 sm:py-8'
 			onSubmit={handleSubmit(onSubmit)}>
-			<div className='absolute top-0 z-auto overflow-hidden right-6 '>
-				<Rsvp />
-			</div>
 			<div className='relative flex flex-col items-center w-full'>
 				<input
 					id='email'
