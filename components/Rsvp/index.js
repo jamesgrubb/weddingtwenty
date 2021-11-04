@@ -8,15 +8,15 @@ import Night from './Night';
 import Day from './Day';
 import Declined from './Declined';
 import ThankYou from './ThankyouForYourMenuChoice';
+import NotFound from './NotFound';
 export default function RSVP(props) {
 	const [isShowing, setIsShowing] = useState(true);
 	const [menuIsShowing, setMenuIsSHowing] = useState(true);
 	const [guestData, setGuestData] = useState([]);
 	const [accepted, setAccepted] = useState(null);
 	const [declined, setDeclined] = useState(null);
-
+	const [found, setFound] = useState(null);
 	const [updatedGuest, setUpdatedGuest] = useState(null);
-	console.log(`props`, props);
 
 	const formRef = useRef();
 
@@ -28,15 +28,14 @@ export default function RSVP(props) {
 
 	const getGuestDetails = async (savedGuestDetails) => {
 		console.log(
-			`initial state "guestData"`,
+			`initial state "guestData.Name"`,
 			guestData,
 			`Raw form data`,
 			savedGuestDetails
 		);
-		setIsShowing(false);
+
 		setGuestData(savedGuestDetails);
 		const { Accept } = savedGuestDetails;
-		console.log(Accept);
 
 		/**
 		 * Switch Statement to save accepted and not accepted
@@ -63,9 +62,12 @@ export default function RSVP(props) {
 				},
 			});
 			const guest = await result.json();
-			console.log(`response from api`, guest);
-			if (guest.length > 0 && Accept === 'Accept') {
-				console.log(`Accpeted guest`, guest);
+
+			if (guest.length === 0) {
+				setFound(false);
+			} else if (guest.length > 0 && Accept === 'Accept') {
+				setFound(true);
+				setIsShowing(false);
 				setAccepted((previousState) => {
 					return {
 						...previousState,
@@ -74,7 +76,9 @@ export default function RSVP(props) {
 					};
 				});
 			} else if (guest.length > 0 && Accept === 'Decline') {
-				console.log(`Declined guest`, guest);
+				setFound(true);
+				setIsShowing(false);
+
 				setDeclined((previousState) => {
 					return {
 						...previousState,
@@ -99,8 +103,6 @@ export default function RSVP(props) {
 	};
 
 	async function hanldeMenuChoice(savedFoodChoice) {
-		console.log(`guestData from sendFoodChoice functions`, guestData.id);
-		console.log(`foodChoice`, savedFoodChoice);
 		try {
 			const updatedFoodChoice = await fetch('/api/guest', {
 				method: 'PUT',
@@ -113,7 +115,6 @@ export default function RSVP(props) {
 				},
 			});
 			setMenuIsSHowing(false);
-			console.log(`returnedFoodChoice`, await updatedFoodChoice.json());
 		} catch (error) {
 			console.error(error);
 		}
@@ -134,8 +135,6 @@ export default function RSVP(props) {
 						'Content-Type': 'application/json',
 					},
 				});
-
-				console.log(await accept.json());
 			} catch (error) {
 				console.error(error);
 			}
@@ -149,9 +148,6 @@ export default function RSVP(props) {
 		/**
 		 * Console effects of switch statement
 		 */
-		console.log('from useEffect guestData', guestData);
-		console.log('from useEffect accepted', accepted);
-		console.log('from useEffect declined', declined);
 	}, [guestData, accepted, declined]);
 
 	return (
@@ -176,6 +172,12 @@ export default function RSVP(props) {
 					</>
 				)}
 				{declined != null && <Declined guest={declined.Name} />}
+				{found === false && (
+					<NotFound
+					// guestName={guestData.Name}
+					// guestSurname={guestData.Surname}
+					/>
+				)}
 				{!menuIsShowing && <ThankYou />}
 			</div>
 		</>
