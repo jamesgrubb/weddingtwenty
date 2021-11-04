@@ -5,18 +5,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import Brand from '../Svg/Brand';
 import Nav from '../Nav';
+import { useRouter } from 'next/router';
 import Cta from '../Rsvp/CallToAction';
 import { FiAlignCenter } from 'react-icons/fi';
 
 const DefaultLayout = ({ children }) => {
-	const [toggleNav, setToggleNav] = useState(true);
-
+	const [mobileNavOpened, setMobileNavOpened] = useState(false);
+	console.log(`mobileNavOpened from outside useEffect`, mobileNavOpened);
+	const handleToggleMobileNav = () => setMobileNavOpened(!mobileNavOpened);
+	const router = useRouter();
+	console.log(router);
+	const activeRoute = router.asPath;
+	console.log(`activeRoute`, activeRoute);
 	const navRef = useRef();
 	useEffect(() => {
-		// const tl = gsap.timeline();
-		// const nav = navRef.current;
-		// toggleNav ? tl.to(nav, { y: 200 }) : tl.to(nav, { y: -200 });
-	}, [toggleNav]);
+		setMobileNavOpened(false);
+		console.log(`mobileNavOpened`, mobileNavOpened);
+	}, [activeRoute]);
 	return (
 		<div className='flex flex-col items-center h-full flex-nowrap'>
 			<div className='fixed left-0 right-0 z-10 w-full bg-teal-50'>
@@ -465,15 +470,11 @@ const DefaultLayout = ({ children }) => {
 					<Nav
 						ref={navRef}
 						classes={`${
-							toggleNav ? 'hidden' : ''
+							!mobileNavOpened ? 'hidden' : ''
 						} absolute left-0 w-full p-4 space-y-4 font-mono text-sm font-light text-teal-500 lowercase sm:right-0 sm:left-auto md:space-y-0 md:p-0 md:space-x-4 bg-teal-50 md:w-auto top-full md:static md:flex`}
 					/>
 					<div className='z-10 translate-x-0 md:hidden'>
-						<button
-							onClick={() => {
-								setToggleNav(!toggleNav);
-							}}
-							className='btn'>
+						<button onClick={handleToggleMobileNav} className='btn'>
 							<span>menu</span>
 							<FiAlignCenter />
 						</button>

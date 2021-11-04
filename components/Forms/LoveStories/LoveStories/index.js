@@ -67,7 +67,7 @@ function LoveStories() {
 						and help. I look forward to reading them to you on the
 						28th December. Janey x{' '}
 					</p>
-					<p class='font-mono ml-auto italic text-sm text-right'>
+					<p className='ml-auto font-mono text-sm italic text-right'>
 						Please send your wise words as soon as you can.
 					</p>
 				</div>
