@@ -477,9 +477,8 @@ const DefaultLayout = ({ children }) => {
 							!mobileNavOpened ? 'hidden' : ''
 						} absolute left-0 w-full p-4 space-y-4 font-mono text-sm font-light text-teal-500 lowercase sm:right-0 sm:left-auto md:space-y-0 md:p-0 md:space-x-4 bg-teal-50 md:w-auto top-full md:static md:flex`}
 					/>
-					<div className='z-10 translate-x-0 md:hidden'>
+					<div className='z-10 translate-x-0 md:hidden w-11 h-11'>
 						<button onClick={handleToggleMobileNav} className='btn'>
-							<span>menu</span>
 							<FiAlignCenter />
 						</button>
 					</div>
