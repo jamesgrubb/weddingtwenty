@@ -23,10 +23,10 @@ const NavItems = [
 		item: 'The C Word',
 		link: '/#the-c-word',
 	},
-	// {
-	// 	item: 'Gifts',
-	// 	link: '/#gifts',
-	// },
+	{
+		item: 'Gifts',
+		link: '/#gifts',
+	},
 	{
 		item: 'Wise Words',
 		link: '/wise-words',
