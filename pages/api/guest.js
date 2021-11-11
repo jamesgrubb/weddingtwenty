@@ -12,35 +12,25 @@ function toTitleCase(str) {
 
 export default async function handler(req, res) {
 	if (req.method === 'POST') {
-		try {
-			const { Name: name, Surname: surname } = await JSON.parse(req.body);
-			console.log(`name`, name);
-			console.log(`surname`, surname);
-			console.log(`req.body`, await req.body);
-			const records = await table('Guests')
-				.select({
-					filterByFormula: `
+		const { Name: name, Surname: surname } = await JSON.parse(req.body);
+		console.log(`name`, name);
+		console.log(`surname`, surname);
+		console.log(`req.body`, await req.body);
+		const records = await table('Guests')
+			.select({
+				filterByFormula: `
 					AND(({name}='${strip(name)}'),({surname}='${strip(surname)}'))						
 						`,
-					/**
-					 * Not sure this logic is helping
-					 */
-					// OR(
-					// (AND({name} = "${name}",{surname} = "${surname}")),
-					// (AND({name} = "${toTitleCase(name)}",{surname} = "${toTitleCase(surname)}")),
-					// (AND({name} = "${name}",FIND("${surname}",{surname})>0)),
-					// (AND({name} = "${name}",FIND(REGEX_REPLACE("${surname}",'[^-]*','' ),{surname})>0))
-					// )
-				})
-				.firstPage();
-			const minifiedRecords = getMinifiedRecords(records);
-			res.statusCode = 200;
-			res.json(minifiedRecords);
-		} catch (error) {
-			console.error(error);
-			res.statusCode = 500;
-			res.json({ msg: 'Something went wrong looking for guests' });
-		}
+			})
+			.firstPage((err, records) => {
+				if (err) {
+					console.error(err);
+				}
+				const minifiedRecords = getMinifiedRecords(records);
+				console.log('api response', minifiedRecords);
+				res.statusCode = 200;
+				res.json(minifiedRecords);
+			});
 	}
 	if (req.method === 'PUT') {
 		try {

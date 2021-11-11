@@ -3,7 +3,7 @@ const FindGuestForm = (props) => {
 	const [name, setName] = useState('');
 	const [surname, setSurname] = useState('');
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const formData = {
 			name: name,

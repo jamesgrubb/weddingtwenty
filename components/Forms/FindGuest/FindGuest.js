@@ -33,12 +33,7 @@ const FindGuest = () => {
 					})
 					.catch((error) => {
 						console.log('catch error', error);
-					}),
-				{
-					pending: 'Promise is pending',
-					success: 'Promise resolved 👌',
-					error: 'Promise rejected 🤯',
-				}
+					})
 			);
 
 			const guests = await result.json();
