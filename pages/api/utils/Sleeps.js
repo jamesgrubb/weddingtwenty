@@ -8,7 +8,7 @@ const sleeps = () => {
 
 	console.log(now.format('YYYY-MM-DD'));
 
-	const date1 = dayjs('2021-12-27');
+	const date1 = dayjs('2021-12-28');
 	const date2 = now.format('YYYY-MM-DD');
 
 	let df4 = date1.diff(date2, 'day');
