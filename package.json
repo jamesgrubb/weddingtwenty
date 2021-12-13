@@ -33,6 +33,6 @@
 		"autoprefixer": "^10.2.6",
 		"postcss": "^8.3.5",
 		"tailwindcss": "^2.2.4",
-		"tailwindcss-breakpoints-inscpector": "^1.0.0"
+		"tailwindcss-breakpoints-inspector": "^1.0.0"
 	}
 }
