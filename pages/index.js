@@ -28,7 +28,7 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 				<title>James&amp;Tinas Wedding</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<Cta handleClick={open} />
+			{/* <Cta handleClick={open} /> */}
 
 			<Hero />
 
@@ -78,7 +78,7 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 					{gifts.url}
 				</ReactMarkdown>
 			</Section>
-			{showDialog && (
+			{/* {showDialog && (
 				<DialogOverlay onDismiss={close}>
 					<DialogContent aria-labelledby='Modal'>
 						<RSVP />
@@ -91,7 +91,7 @@ export default function Home({ events, venue, welcome, gifts, cWord, live }) {
 						</button>
 					</DialogContent>
 				</DialogOverlay>
-			)}
+			)} */}
 		</>
 	);
 }

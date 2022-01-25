@@ -73,7 +73,7 @@ const Hero = () => {
 						james and tina's wedding
 					</h1>
 					<p className='text-2xl text-gray-600 uppercase font-hatton'>
-						28 December 2021
+						14 May 2022
 					</p>
 					<p className='uppercase font-hatton'>
 						<Sleeps className='font-lora' /> sleeps to go
